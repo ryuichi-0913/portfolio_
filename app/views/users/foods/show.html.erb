@@ -8,9 +8,11 @@
             <p></p>
             <div>
               <% if @user == current_user %>
-              <%=link_to "編集",edit_users_food_path(@food),method: :get %><% end %>
+              	<%=link_to "編集",edit_users_food_path(@food),method: :get %>
+              <% end %>
       		　<% if @user == current_user %>
-              <%= link_to "削除",edit_users_food_path(@food), method: :delete %><% end %>
+              	<%= link_to "削除",users_food_path(@food), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              <% end %>
             </div>
 
   </div>
