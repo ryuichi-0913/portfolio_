@@ -1,0 +1,30 @@
+<h1>Users::Foods#index</h1>
+
+  <div>
+    <h2>Foods Idea</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>投稿画像</th>
+          <th>アイデア名</th>
+          <th>投稿者</th>
+          <th>投稿日時</th>
+          <th>いいね</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food|%>
+          <tr>
+            <td><%= attachment_image_tag food, :food_image, size: '60x60',　format: 'jpeg' %></td>
+            <td><%= food.food_name %></td>
+            <td></td>
+          	<td><%= food.created_at.strftime('%Y/%m/%d') %></td>
+          	<td></td>
+         </tr>
+      　<% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+<p>Find me in app/views/users/foods/index.html.erb</p>

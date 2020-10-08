@@ -1,0 +1,39 @@
+<h1>Users::Foods#new</h1>
+
+<%= form_for(@food, url: '/users/foods') do |f| %>
+	<div>
+		<div>
+			<%= f.label :food_image, "食品イメージ画像" %>
+			<div class="image_field">
+				<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %>
+				<span>
+					<%= f.attachment_field :food_image %>画像選択</span>
+			</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :food_name, "アイデア名（食品）" %></td>
+					<td><%= f.text_field :food_name %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :food_introduction, "商品説明" %></td>
+					<td><%= f.text_area :food_introduction, rows: 3 %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<%= f.submit %>
+		</div>
+	</div>
+<% end %>
+
+
+
+<p>Find me in app/views/users/foods/new.html.erb</p>

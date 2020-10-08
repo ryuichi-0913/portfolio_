@@ -1,0 +1,16 @@
+<p>アイデア投稿のページだよ</p>
+  <div>
+    <h2>Foods Idea</h2>
+            <p><%= @food.food_name %></p>
+            <span><%= attachment_image_tag @food, :food_image, size: '200x200',　format: 'jpeg' %></span>
+            <p><%= @food.food_introduction %></p>
+            <p><%= @food.created_at.strftime('%Y/%m/%d') %></p>
+            <p></p>
+            <div>
+              <% if @user == current_user %>
+              <%=link_to "編集",edit_users_food_path(@food),method: :get %><% end %>
+      		　<% if @user == current_user %>
+              <%= link_to "削除",edit_users_food_path(@food), method: :delete %><% end %>
+            </div>
+
+  </div>

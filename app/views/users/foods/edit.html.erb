@@ -1,0 +1,15 @@
+<h1>編集画面</h1>
+<!-- form_for部分 -->
+<%= form_for(@food, url: users_food_path ) do |f| %>
+	<%= f.label :food_image, "食品イメージ画像" %><br>
+	<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %><br>
+		<span>
+	<%= f.attachment_field :food_image %>画像選択</span><br>
+
+　　<%= f.label :food_name, "アイデア名（食品）" %></td><br>
+　　<%= f.text_field :food_name %></td>
+
+  　<%= f.label :food_introduction, "商品説明" %></td><br>
+  　<%= f.text_area :food_introduction, rows: 3 %><br>
+  <%= f.submit '保存' %>
+<% end %>
