@@ -11,7 +11,7 @@ class Users::FoodsController < ApplicationController
     redirect_to users_food_path(@food)
     else
     @user = current_user
-    @foods = Book.all
+    @foods = Food.all
     render "index"
     end
   end

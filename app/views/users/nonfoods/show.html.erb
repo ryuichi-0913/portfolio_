@@ -1,0 +1,18 @@
+<p>アイデア投稿のページだよ</p>
+  <div>
+    <h2>NONfoods Idea</h2>
+            <p><%= @nonfood.nonfood_name %></p>
+            <span><%= attachment_image_tag @nonfood, :nonfood_image, size: '200x200',　format: 'jpeg' %></span>
+            <p><%= @nonfood.nonfood_introduction %></p>
+            <p><%= @nonfood.created_at.strftime('%Y/%m/%d') %></p>
+            <p></p>
+            <div>
+              <% if @user == current_user %>
+              	<%=link_to "編集",edit_users_nonfood_path(@nonfood),method: :get %>
+              <% end %>
+      		　<% if @user == current_user %>
+              	<%= link_to "削除",users_nonfood_path(@nonfood), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              <% end %>
+            </div>
+
+  </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_093937) do
+ActiveRecord::Schema.define(version: 2020_10_08_033301) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_10_06_093937) do
     t.string "food_image_id"
     t.string "food_name"
     t.text "food_introduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nonfoods", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "nonfood_image_id"
+    t.string "nonfood_name"
+    t.text "nonfood_introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

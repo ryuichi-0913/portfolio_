@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
 }
   	namespace :admin do
-  	    get 'top' => 'homes#top', as: 'top'
+    get 'top' => 'homes#top', as: 'top'
+
   	end
 
 
@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
 }
    namespace :users do
+    root 'home#top'
   	resources :foods
-
-	  root 'home#top'
+    resources :nonfoods
    end
 end

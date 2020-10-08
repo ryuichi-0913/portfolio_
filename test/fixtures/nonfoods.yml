@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  nonfood_image_id: MyString
+  nonfood_name: MyString
+  nonfood_introduction: MyText
+
+two:
+  user_id: 1
+  nonfood_image_id: MyString
+  nonfood_name: MyString
+  nonfood_introduction: MyText
