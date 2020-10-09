@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   sessions: 'admins/sessions'
 }
   	namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
-
+      get 'home/about'
   	end
 
 
@@ -15,8 +14,9 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
 }
    namespace :users do
-    root 'home#top'
   	resources :foods
     resources :nonfoods
+    resources :users, only: [:show, :edit, :update]
    end
+   root 'home#top'
 end

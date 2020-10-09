@@ -18,6 +18,7 @@ class Users::NonfoodsController < ApplicationController
 
   def index
     @nonfoods = Nonfood.all
+    @user = current_user
   end
 
   def show

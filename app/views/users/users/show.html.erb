@@ -1,0 +1,23 @@
+
+<p>ユーザーのページだよ</p>
+  <div>
+    <h2>マイページ</h2>
+            <p><%= @user.name %></p>
+            <span><%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %></span>
+            <div><% if @user == current_user %>
+              	<%=link_to "プロフィールの編集を行う",edit_users_user_path(@user),method: :get %><% end %>
+            </div>
+            <p>自己紹介</p>
+            <p><%= @user.user_introduction %></p>
+            <p>登録日</p>
+            <p><%= @user.created_at.strftime('%Y/%m/%d') %></p>
+            <p>職業</p>
+			<p><%= @user.profession %></p>
+			<p>性別</p>
+			<p><%= @user.gender %></p>
+			<p>年代</p>
+			<p><%= @user.age_group %></p>
+
+
+
+  </div>

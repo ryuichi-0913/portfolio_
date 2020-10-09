@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
       has_many :foods,dependent: :destroy
       has_many :nonfoods,dependent: :destroy
+      attachment :user_image
+
 end

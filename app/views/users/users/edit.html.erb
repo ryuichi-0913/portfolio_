@@ -1,0 +1,15 @@
+<h1>編集画面</h1>
+<!-- form_for部分 -->
+<%= form_for(@user, url: users_user_path ) do |f| %>
+	<%= f.label :user_image, "ユーザー画像" %><br>
+	<%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %><br>
+		<span>
+	<%= f.attachment_field :user_image %>画像選択</span><br>
+
+　　<%= f.label :name, "アイデア名（食品）" %></td><br>
+　　<%= f.text_field :name %></td>
+
+  　<%= f.label :user_introduction, "自己紹介" %></td><br>
+  　<%= f.text_area :user_introduction, rows: 3 %><br>
+  <%= f.submit '保存' %>
+<% end %>

@@ -15,12 +15,18 @@
         <ul>
           <% if user_signed_in? %>
             <li>ユーザー</li>
+            <li><%= link_to "マイページ", users_user_path(@user.id) %></li>
+            <li><%= link_to "食品投稿", users_foods_path %></li>
+            <li><%= link_to "非食品投稿", users_nonfoods_path %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <% elsif admin_signed_in? %>
             <li>管理者</li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% else %>
             <li>ゲストユーザー</li>
+            <li><%= link_to "このサイトについて", root_path %></li>
+            <li><%= link_to "食品投稿", users_foods_path %></li>
+            <li><%= link_to "非食品投稿", users_nonfoods_path %></li>
             <li><%= link_to "新規登録", new_user_registration_path %></li>
             <li><%= link_to "ログイン", new_user_session_path %></li>
           <% end %>
