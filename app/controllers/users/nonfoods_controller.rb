@@ -1,5 +1,6 @@
 class Users::NonfoodsController < ApplicationController
  def new
+    @user = current_user
     @nonfood = Nonfood.new
   end
 
@@ -27,6 +28,7 @@ class Users::NonfoodsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @nonfood = Nonfood.find(params[:id])
     if @nonfood.user != current_user
       redirect_to users_nonfoods_path

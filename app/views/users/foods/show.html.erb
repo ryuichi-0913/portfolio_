@@ -13,6 +13,7 @@
       		　<% if @user == current_user %>
               	<%= link_to "削除",users_food_path(@food), method: :delete, "data-confirm" => "本当に削除しますか？" %>
               <% end %>
+              <%= link_to "食品一覧へ", users_foods_path %>
             </div>
 
   </div>
