@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
       has_many :foods,dependent: :destroy
       has_many :nonfoods,dependent: :destroy
+      has_many :food_comments,dependent: :destroy
+
       attachment :user_image
 
       enum profession:[:profession_private, :unemployed, :worker, :housework]

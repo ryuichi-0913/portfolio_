@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   sessions: 'users/sessions',
   registrations: 'users/registrations'
 }
+get 'food_comment/new'
    namespace :users do
-  	resources :foods
+  	resources :foods do
+     resources :food_comments
+    end
     resources :nonfoods
     resources :users, only: [:show, :edit, :update]
    end
