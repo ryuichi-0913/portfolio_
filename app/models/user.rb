@@ -8,4 +8,8 @@ class User < ApplicationRecord
       has_many :nonfoods,dependent: :destroy
       attachment :user_image
 
+      enum profession:[:profession_private, :unemployed, :worker, :housework]
+      enum gender:[:gender_private, :man, :human]
+      enum age_group:[:age_private, :Twenties, :thirties, :forties, :fifties, :sixties, :seventies, :eighties, :nineties]
+
 end

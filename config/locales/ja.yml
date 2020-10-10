@@ -1,0 +1,22 @@
+ja:
+  enums:
+    user:
+      profession:
+        profession_private: 非公開
+        unemployed: 無職
+        worker: 在職
+        housework: 専業主婦(主夫)
+      gender:
+        gender_private: 非公開
+        man: 男性
+        human: 女性
+      age_group:
+        age_private: 非公開
+        Twenties: 20代
+        thirties: 30代
+        forties: 40代
+        fifties: 50代
+        sixties: 60代
+        seventies: 70代
+        eighties: 80代
+        nineties: 90代

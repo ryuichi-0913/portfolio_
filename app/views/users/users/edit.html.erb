@@ -1,15 +1,39 @@
 <h1>編集画面</h1>
 <!-- form_for部分 -->
 <%= form_for(@user, url: users_user_path ) do |f| %>
-	<%= f.label :user_image, "ユーザー画像" %><br>
-	<%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %><br>
-		<span>
-	<%= f.attachment_field :user_image %>画像選択</span><br>
+    <div>
+	<%= f.label :user_image, "ユーザー画像" %>
+	<%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %>
+	<%= f.attachment_field :user_image %>画像選択
+	</div>
 
-　　<%= f.label :name, "アイデア名（食品）" %></td><br>
-　　<%= f.text_field :name %></td>
+	<div>
+　　<%= f.label :name, "ニックネーム" %><br>
+　　<%= f.text_field :name %>
+	</div>
 
-  　<%= f.label :user_introduction, "自己紹介" %></td><br>
-  　<%= f.text_area :user_introduction, rows: 3 %><br>
+  　<%= f.label :user_introduction, "自己紹介" %>
+  　<%= f.text_area :user_introduction, rows: 3 %>
+
+    <div>
+    <%= f.label :職業 %>
+    <%= f.select :profession, User.professions.keys.map {|k| [I18n.t("enums.user.profession.#{k}"), k]} %>
+    </div>
+
+    <div>
+    <%= f.label :性別 %>
+    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
+
+    </div>
+
+
+    <div>
+    <%= f.label :年代 %>
+    <%= f.select :age_group, User.age_groups.keys.map {|k| [I18n.t("enums.user.age_group.#{k}"), k]} %>
+    </div>
+
+
+
+
   <%= f.submit '保存' %>
 <% end %>
