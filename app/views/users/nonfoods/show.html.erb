@@ -18,3 +18,41 @@
             </div>
 
   </div>
+
+<div>
+      <table>
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <% @nonfood.nonfood_comments.each do |nonfood_comment| %>
+      <tbody>
+        <tr>
+          <td><%= link_to users_user_path(nonfood_comment.user), class: 'hoge' do %>
+          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br><%= nonfood_comment.user.name %><% end %></td>
+          <td><p><%= nonfood_comment.nonfood_comment %></p></td>
+          <td><% if nonfood_comment.user == current_user %>
+            　 <%= link_to "削除", users_nonfood_nonfood_comment_path(nonfood_comment.nonfood, nonfood_comment), method: :delete, class: "btn btn-danger pull-right" %><% end %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+              <!-- コメント本文 -->
+           <!-- <form> -->
+        <%= form_for [:users,@nonfood, @nonfood_comment] do |f| %>
+
+          <% if @nonfood_comment.errors.any? %>
+          <h3><%= @nonfood_comment.errors.count %> errors prohibited this nonfood from being saved</h3>
+              <ul>
+                <% @nonfood_comment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+
+          <% end %>
+            <%= f.text_area :nonfood_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+        <!-- </form> -->
+</div>

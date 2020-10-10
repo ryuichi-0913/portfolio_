@@ -16,9 +16,11 @@ Rails.application.routes.draw do
 get 'food_comment/new'
    namespace :users do
   	resources :foods do
-     resources :food_comments
+     resources :food_comments, only: [:create, :destroy]
     end
-    resources :nonfoods
+    resources :nonfoods do
+     resources :nonfood_comments, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update]
    end
    root 'home#top'

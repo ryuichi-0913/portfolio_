@@ -25,6 +25,7 @@ class Users::NonfoodsController < ApplicationController
   def show
     @nonfood = Nonfood.find(params[:id])
     @user = @nonfood.user
+    @nonfood_comment = NonfoodComment.new
   end
 
   def edit
