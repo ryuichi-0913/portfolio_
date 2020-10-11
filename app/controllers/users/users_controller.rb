@@ -23,6 +23,17 @@ class Users::UsersController < ApplicationController
    end
   end
 
+  def follow
+    @user = current_user
+    @users = User.all
+  end
+
+  def followed
+    @user = current_user
+    @users = User.all
+  end
+
+
 
   private
 
