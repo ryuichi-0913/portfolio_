@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_130439) do
+ActiveRecord::Schema.define(version: 2020_10_11_053907) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,10 +25,25 @@ ActiveRecord::Schema.define(version: 2020_10_10_130439) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "food_id"
+    t.integer "nonfood_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "food_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "food_id"
     t.text "food_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "food_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_10_10_130439) do
     t.integer "user_id"
     t.integer "nonfood_id"
     t.text "nonfood_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nonfood_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "nonfood_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

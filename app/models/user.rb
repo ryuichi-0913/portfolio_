@@ -8,6 +8,8 @@ class User < ApplicationRecord
       has_many :nonfoods,dependent: :destroy
       has_many :food_comments,dependent: :destroy
       has_many :nonfood_comments,dependent: :destroy
+      has_many :food_favorites, dependent: :destroy
+      has_many :nonfood_favorites, dependent: :destroy
 
       attachment :user_image
 
