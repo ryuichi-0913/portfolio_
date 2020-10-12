@@ -15,45 +15,33 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #6c6b6b;
-  font-family: cursive;
+.nav-item {
+	color: white;
 }
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.nav-bar-link {
-	text-decoration: none;
-    color: black;
-}
-.header-logo {
-	text-decoration: none;
-    color: black;
-    font-family: cursive;
+.cover-text {
+	display: table-cell;
+	vertical-align: middle;
+  text-align: center;
 }
 footer {
-	width: 100%;
-	height: 100px;
-	position: absolute;
-	bottom:0;
-	text-align: center;
-	background-color: #660000;
-	color: white;
-	padding: 40px 0;
-	font-size: 20px;
-	margin-bottom: -120px;
+    width: 100%;
+    color: white;
+    background-color: #4f122b;
+    text-align: center;
+    height: 60px;
+    padding: 20px;
+    bottom: 0;
 }
-.footer-p {
-	color: white;
+.topimage {
+	background-image:url('/assets/voice.jpg');
+	background-position:center;
+	background-size: cover;
+    height: 680px;
+    width: 100%;
+    padding: 30px;
 }
-.btn-link {
-	text-decoration: none;
-}
-.nav-item1 {
-	margin-top: 50px;
+.topimagelog {
+    position: relative;
+    padding: 0.25em 0.5em;
+    color: white;
 }

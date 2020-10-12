@@ -1,8 +1,82 @@
-<h1>Home#top このサイトについて</h1>
-
-
-<P>画像</P>
-<P>このサイトについて</P>
-<P>このサイトの使い方</P>
-
-<p>Find me in app/views/home/top.html.erb</p>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container-fluid">
+      <div class="topimage center-block" >
+        <h1 style="color: white">Tunagukoe</h1>
+        <h2 style="color: white">あなたの声(アイデア)を伝えてみませんか？</h2>
+        <div class="sign_up">
+          <h3 class="topimagelog">
+            <br><%= link_to "新規登録", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up", :style=>"color:white;" %>
+            　<%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in", :style=>"color:white;" %></h3>
+        </div>
+      </div>
+  </div>
+</div>
+  <section class="container">
+    <h1 class="font-weight-bold text-center ">このサイトについて</h1><br>
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="row">
+                      <img class="col-sm-6" src="/assets/chain.png">
+                      <div class="col-sm-6">
+                          <h3>1.あなたと商品開発者・仕入担当をつなぐサイトです。</h3>
+                          <p>商品の開発・仕入れ担当者は日々生活を向上させる商品開発に取り組んでいます。</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="row"> <img class="col-sm-6" src="/assets/hear.jpg">
+                    <div class="col-sm-6">
+                      <h3>2.企業はあなたの声を聞きたがっています。</h3>
+                      <p>みなさんの日常におけるさまざまなシーン・思いを参考にできたら、より具体的な開発を行えます。</p>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row"> <img class="col-sm-6" src="/assets/structure.jpg">
+                <div class="col-sm-6">
+                  <h3>3.みんなの声が形になるかもしれません。</h3>
+                  <p>ふとこんなアイデア思いついた！そのちょっとしたアイデアって、みんなも思ってる生活のお役立ちに貢献できるかも！</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row"> <img class="col-sm-6" src="/assets/simple.jpg">
+                <div class="col-sm-6">
+                  <h3>4.シンプルなサイト構成です。</h3>
+                  <p>投稿した声を担当者や周りの人達が日々キャッチ、登録して発信して交流するシンプルなサイトです。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+  </section>
+    <hr>
+    <section class="container">
+        <h1 class="font-weight-bold text-center ">このサイトの使い方</h1><br>
+        <div class="row">
+            <div class="col-lg-7 text-center ">
+                <h2 class="font-weight-bold">1.さっそく登録してみよう!!</h2>
+                <p class="lead" style="line-height: 2.0;">本サイトは会員登録をしない場合は閲覧のみが可能です。<br>自ら情報を発信したり他の人とやり取りするなど、<br>機能を全て使う場合は会員登録をお願いします。</p>
+            </div>
+            <div class="col-lg-5"> <img class="img-responsive center-block" src="/assets/sign_up.jpg"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-7 text-center ">
+                <h2 class="font-weight-bold">2.投稿してみよう!!</h2>
+                <p class="lead" style="line-height: 2.0;">会員登録後はマイページから食品のアイデア・非食品の<br>アイデアに分かれて新規投稿を行いましょう。<br>ふと思いついたアイデアも外歓迎です！！<br>また他の人の投稿にいいねやコメントを残して、<br>他の人とのつながりでより思いのこもったアイデアに。</p>
+            </div>
+            <div class="col-lg-5 order-md-1"> <img class="img-responsive center-block" src="/assets/posts.jpg"> </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-7 text-center ">
+                <h2 class="font-weight-bold">3.投稿を見よう!!</h2>
+                <p class="lead" style="line-height: 2.0;">みんなの日常での色んな声（アイデア）が載っています。<br>参考にすることで日々の生活がより豊かになるかもしれません。<br>コメント機能を使って意見を出し合えば、より深いアイデアになるかも。<br>
+            </div>
+            <div class="col-lg-5"> <img class="img-responsive center-block" src="/assets/look.jpg"> </div>
+        </div>
+    </section>
+</body>
