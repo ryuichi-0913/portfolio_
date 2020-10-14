@@ -1,33 +1,25 @@
-<%= form_for(@food, url: '/users/foods') do |f| %>
-	<div>
-		<div>
-			<%= f.label :food_image, "食品イメージ画像" %>
-			<div class="image_field">
-				<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %>
-				<span>
-					<%= f.attachment_field :food_image %>画像選択</span>
+<body>
+    <div class="container">
+    　<h1 class="toph1" style="margin-bottom: 30px;">食品アイデア新規投稿</h1>
+        <div class="row">
+        	<div class="col-md-5">
+    <!-- 新規投稿フォーム -->
+				<%= form_for(@food, url: '/users/foods') do |f| %>
+
+					<div><%= f.label :food_image, "食品イメージ画像" %>
+						 <%= f.attachment_field :food_image %>
+					</div>
+                    <div><%= f.label :food_name, "アイデア名（食品）" %>
+					     <%= f.text_field :food_name, :size=>"60" %>
+					</div>
+                    <div><%= f.label :food_introduction, "商品説明" %>
+						 <%= f.text_area :food_introduction, :size=>"60x11" %>
+					</div>
+					<div>
+						<%= f.submit('保存する',class: 'btn btn-info my-1 mb-5 px-5') %>
+					</div>
+				<% end %>
 			</div>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%= f.label :food_name, "アイデア名（食品）" %></td>
-					<td><%= f.text_field :food_name %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :food_introduction, "商品説明" %></td>
-					<td><%= f.text_area :food_introduction, rows: 3 %></td>
-				</tr>
-			</tbody>
-		</table>
-		<div>
-			<%= f.submit %>
-		</div>
-	</div>
-<% end %>
+    </div>
+</body>

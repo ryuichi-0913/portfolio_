@@ -1,11 +1,11 @@
- <div>
-    <h2>Foods Idea</h2>
-    <table>
+ <div class="container">
+  <div class="low">
+    <h1>食品アイデア</h1>
+    <table class="table table-hover table-inverse">
       <thead>
         <tr>
-          <th>投稿画像</th>
-          <th>アイデア名</th>
-          <th>投稿者</th>
+          <th>アイデア画像/アイデア名</th>
+          <th>投稿者イメージ/投稿者名</th>
           <th>投稿日時</th>
           <th>いいね</th>
         </tr>
@@ -14,16 +14,35 @@
         <% @foods.each do |food|%>
           <tr>
             <td><%= link_to users_food_path(food) do %>
-            	  <%= attachment_image_tag food, :food_image, size: '60x60',　format: 'jpeg' %>
-            	<% end %></td>
-            <td><%= link_to users_food_path(food) do %>
-            	  <%= food.food_name %>
-            	<% end %></td>
-            <td></td>
+            	    <%= attachment_image_tag food, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg" %>
+            	  <% end %>
+               <%= link_to users_food_path(food) do %>
+            	    <%= food.food_name %>
+            	  <% end %>
+            </td>
+            <td><%= link_to users_user_path(food.user), class: 'hoge' do %>
+              <%= attachment_image_tag food.user, :user_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg" %>
+              <% end %>
+              <%= link_to food.user.name, users_user_path(food.user) %></td>
           	<td><%= food.created_at.strftime('%Y/%m/%d') %></td>
-          	<td></td>
+           <!-- いいねここから -->
+          <% if food.food_favorited_by?(current_user) %>
+          <td>
+            <%= link_to users_food_food_favorites_path(food), method: :delete do %>
+              <%= food.food_favorites.count %> いいね
+            <% end %>
+          </td>
+          <% else %>
+          <td>
+            <%= link_to users_food_food_favorites_path(food), method: :post do %>
+              <%= food.food_favorites.count %> いいね
+            <% end %>
+          </td>
+          <% end %>
+          <!-- ここまで --></td>
          </tr>
       　<% end %>
       </tbody>
     </table>
   </div>
+</div>

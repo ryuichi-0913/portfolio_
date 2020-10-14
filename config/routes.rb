@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     root 'home#top'
     post 'users/follow/:id' => 'relationships#follow', as: 'follow' # フォローする
     post 'users/unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
-    get "user/follow" => "users/users#follow"
-    get "user/followed" => "users/users#followed"
+    get "user/follow/:id" => "users/users#follow", as:'user_follow'
+    get "user/followed:id" => "users/users#followed", as:'user_followed'
     get 'food_comment/new'
       namespace :users do
+    get 'users/userallpost'
+    get 'users/favolist'
 
 
         resources :users, only: [:show, :edit, :update]

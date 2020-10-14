@@ -24,14 +24,32 @@ class Users::UsersController < ApplicationController
   end
 
   def follow
-    @user = current_user
-    @users = User.all
+    @user = User.find(params[:id])
   end
 
   def followed
-    @user = current_user
+    @user = User.find(params[:id])
     @users = User.all
   end
+
+  def userallpost
+    @user = current_user
+    @foods = current_user.foods.all
+    @nonfoods = current_user.nonfoods.all
+    # それぞれの複数インスタンスを1つの配列にする
+    @instances = @foods | @nonfoods
+    # 作成降順に並び替え
+    @instances.sort!{ |a, b| b[:created_at] <=> a[:created_at] }
+  end
+
+  def favolist
+    @user = current_user
+    @foods = Food.all
+    @nonfoods = Nonfood.all
+    @instances = @foods | @nonfoods
+    @instances.sort!{ |a, b| b[:created_at] <=> a[:created_at] }
+  end
+
 
 
 

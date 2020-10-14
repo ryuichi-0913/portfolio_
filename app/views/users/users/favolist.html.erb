@@ -1,0 +1,41 @@
+
+
+<div class="container">
+  <div class="low">
+    <h1><%= current_user.name %>さんのお気に入り一覧</h1>
+
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>アイデア画像</th>
+          <th>アイデア名</th>
+          <th>投稿日時</th>
+          <th>いいね</th>
+        </tr>
+      </thead>
+        <tbody>
+
+            <% @instances.each do |instance| %>
+              <tr>
+                <td><%=
+                  if instance.respond_to? :food_image_id
+                    attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                  elsif instance.respond_to? :nonfood_image_id
+                    attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                  end%>
+                </td>
+                <td><%=
+                  if instance.respond_to? :food_name
+                    instance[:food_name]
+                  else
+                    instance[:nonfood_name]
+                  end%>
+                </td>
+                <td><%= current_user.name %></td>
+                <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
+              </tr>
+        　  <% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
