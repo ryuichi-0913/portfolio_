@@ -1,47 +1,58 @@
-
-
-<div class="container">
-  <div class="low">
-    <h1><%= current_user.name %>さんの投稿一覧</h1>
-
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th>アイデア画像</th>
-          <th>アイデア名</th>
-          <th>投稿日時</th>
-          <th>いいね</th>
-        </tr>
-      </thead>
-        <tbody>
-
-            <% @instances.each do |instance| %>
+<body>
+  <div class="container">
+    <div class="low">
+    <h2><%= current_user.name %>さんの投稿一覧</h2>
+      <table class="table table-hover table-inverse">
+          <thead>
               <tr>
-                <td><%=
-                  if instance.respond_to? :food_image_id
-                    attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
-                  else
-                    attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
-                  end%>
-                </td>
-                <td><%=
-                  if instance.respond_to? :food_name
-                    instance[:food_name]
-                  else
-                    instance[:nonfood_name]
-                  end%>
-                </td>
-                <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
-                <td><%=
-                if instance.respond_to? :food_name
-                 instance.food_favorites.count
-                   else
-                 instance.nonfood_favorites.count
-                   end %>
-                 </td>
+                  <th>アイデア画像</th>
+                  <th>アイデア名</th>
+                  <th>投稿日時</th>
+                  <th>いいね</th>
+                  <th></th>
               </tr>
-        　  <% end %>
-        </tbody>
-    </table>
+          </thead>
+
+          <tbody>
+  <!-- food、nonfoodの情報取得の条件分岐　instance利用 -->
+              <% @instances.each do |instance| %>
+                  <tr>
+  <!-- instance変数後に続くカラム情報をrespond_to?で判定
+    　　　判定起点はfood_name等の同意義を持つカラムをrespond_to後に配置　条件分岐で正しい情報に基づき表示させる -->
+                    <td><%=
+                        if instance.respond_to? :food_image_id
+                          attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                        else
+                          attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                        end%>
+                    </td>
+                    <td><%=
+                        if instance.respond_to? :food_name
+                          instance[:food_name]
+                        else
+                          instance[:nonfood_name]
+                        end%>
+                    </td>
+                    <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
+                    <td><%=
+                        if instance.respond_to? :food_name
+                       instance.food_favorites.count
+                        else
+                       instance.nonfood_favorites.count
+                        end %>
+                    </td>
+                    <td><%=
+                       if instance.respond_to? :food_name
+                        link_to "投稿情報を見る", users_food_path(@user)
+                       else
+                        link_to "投稿情報を見る", users_nonfood_path(@user)
+                       end %>
+                    </td>
+                  </tr>
+          　  <% end %>
+  <!-- 条件分岐ここまで -->
+          </tbody>
+      </table>
+    </div>
   </div>
-</div>
+</body>

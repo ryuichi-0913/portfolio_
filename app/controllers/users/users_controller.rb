@@ -36,10 +36,8 @@ class Users::UsersController < ApplicationController
     @user = current_user
     @foods = current_user.foods.all
     @nonfoods = current_user.nonfoods.all
-    # それぞれの複数インスタンスを1つの配列にする
-    @instances = @foods | @nonfoods
-    # 作成降順に並び替え
-    @instances.sort!{ |a, b| b[:created_at] <=> a[:created_at] }
+    @instances = @foods | @nonfoods        # それぞれの複数インスタンスを1つの配列にする
+    @instances.sort!{ |a, b| b[:created_at] <=> a[:created_at] } # 作成降順に並び替え
   end
 
   def favolist

@@ -3,40 +3,43 @@
 	<h2><b><%= @user.name %></b> さんのページ</h2>
 		<div class="row">
   			<div class="col-md-3">
-	            <span><%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;}" %></span>
+	            <span><%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;" %></span>
 	            <div>
 	            	<% if @user == current_user %>
-	              		<%=link_to "プロフィール編集",edit_users_user_path(@user),method: :get, class: "btn btn-info col-xs-9", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
+	              		<%=link_to "プロフィール編集",edit_users_user_path(@user),method: :get, class: "btn btn-info col-xs-10", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
 	              	<% end %>
 <!-- フォロー表示-->
 		            <% if current_user.id != @user.id %>
 		              <% if current_user.following?(@user) %>
-		                <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-primary col-xs-9", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
+		                <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info col-xs-11", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
 		              <% else %>
-		                <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-primary col-xs-9", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
+		                <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-info col-xs-11", :style=>"    margin-top: 30px; margin-top: 30px; margin-left: 10px; margin-bottom:10px;" %>
 		              <% end %>
 		            <% end %>
 <!-- ここまで -->
 	            </div>
 	        </div>
-			<div class="col-md-5">
-		　　　　　　　<p style="padding-left: 20px; font-weight: bold; font-size: 20px;">性別</p>
-					<p><%= @user.gender_i18n %></p>
-		　　　　　　　<p style="padding-left: 20px; font-weight: bold; font-size: 20px;">年代</p>
-					<p><%= @user.age_group_i18n %></p>
-		　　　　　　　<p style="padding-left: 20px; font-weight: bold; font-size: 20px;">職業</p>
-					<p><%= @user.profession_i18n %></p>
-		　　　　　　　<p style="padding-left: 20px; font-weight: bold; font-size: 20px; margin-bottom: 5px;">登録日</p>
-		            <p><%= @user.created_at.strftime('%Y/%m/%d') %></p>
-		　　　　　　　<p style="padding-left: 20px; font-weight: bold; font-size: 20px;">自己紹介</p>
-		            <p><%= @user.user_introduction %></p>
+			<div class="col-md-6">
+					<p class="showp1">性別</p>
+					<p class="showp2"><%= @user.gender_i18n %></p>
+		　　　　　　　<p class="showp1">年代</p>
+					<p class="showp2"><%= @user.age_group_i18n %></p>
+		　　　　　　　<p class="showp1">職業</p>
+					<p class="showp2"><%= @user.profession_i18n %></p>
+		　　　　　　　<p class="showp1">登録日</p>
+		            <p class="showp2"><%= @user.created_at.strftime('%Y/%m/%d') %></p>
+		　　　　　　　<p class="showp1">自己紹介</p>
+		            <p class="showp2"><%= @user.user_introduction %></p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
+				<% if current_user.id == @user.id %>
 				<h4 style="font-weight: bold;">アイデアを投稿する</h4>
 					<div><%= link_to "食品投稿", new_users_food_path, class: "btn btn-info col-xs-6" %>
 					</div><br>
 	　　　　　　　	<div><%= link_to "非食品投稿", new_users_nonfood_path, class: "btn btn-info col-xs-6" %>
 					</div>
+					<% else %>
+					<% end %>
 			</div>
 			<div class="col-md-12">
 				<div class="under_menu">
@@ -54,7 +57,7 @@
 							<%= link_to 'いいねリスト', users_users_favolist_path %></i>
 						</div>
 						<div class="col-xs-3">
-								<i class="glyphicon glyphicon-pencil"><br>
+								<i class="glyphicon glyphicon-star"><br>
 							<%= link_to '投稿一覧', users_users_userallpost_path %></i>
 						</div>
 					</ul>

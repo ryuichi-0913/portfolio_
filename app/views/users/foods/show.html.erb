@@ -1,75 +1,86 @@
-<p>アイデア投稿のページだよ</p>
-  <div>
-    <h2>Foods Idea</h2>
-            <p><%= @food.food_name %></p>
-            <span><%= attachment_image_tag @food, :food_image, size: '200x200',　format: 'jpeg' %></span>
-            <p><%= @food.food_introduction %></p>
-            <p><%= @food.created_at.strftime('%Y/%m/%d') %></p>
-            <p></p>
-            <div>
-              <% if @user == current_user %>
-              	<%=link_to "編集",edit_users_food_path(@food),method: :get %>
-              <% end %>
-      		　<% if @user == current_user %>
-              	<%= link_to "削除",users_food_path(@food), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              <% end %>
-              <%= link_to "食品一覧へ", users_foods_path %>
-            </div>
+<body>
+  <div class="container">
+    <h2>食品投稿詳細</h2>
+      <div class="row">
+        <div class="col-md-8">
+        <span style="display: block; text-align: center;">
+          <%= attachment_image_tag @food, :food_image, size: '250x250',　format: 'jpeg' %>
+        </span>
+    　　　　　　　<p class="showp1">食品アイデア名</p>
+                <p class="showp2"><%= @food.food_name %></p>
+    　　　　　　　<p class="showp1">アイデア説明</p>
+                <p class="showp2"><%= @food.food_introduction %></p>
+    　　　　　　　<p class="showp1">登録日</p>
+                <p class="showp2"><%= @food.created_at.strftime('%Y/%m/%d') %></p>
+                  　<div>
+        <!-- 編集ボタン表示 -->
+                      <% if @user == current_user %>
+                          <%= link_to "削除",users_food_path(@food), method: :delete, class: "btn btn-danger pull-right", "data-confirm" => "本当に削除しますか？" %>
+                      <% end %>
+                    　<% if @user == current_user %>
+                          <%=link_to "編集",edit_users_food_path(@food),method: :get, class: "btn btn-success pull-right" %>
+                      <% end %>
+                  　</div><br>
+                      <div style="text-align: right;" >
+                        <%= link_to "食品一覧へ", users_foods_path ,class: 'btn btn-info my-1 mb-5 px-5' %>
+                      </div>
 
+      　 <!--ここまで -->
+            <!-- いいね表示ここから -->
+                      <span style="display: block; text-align: left;">
+                        <% if @food.food_favorited_by?(current_user) %>
+                          <td>
+                            <%= link_to users_food_food_favorites_path(@food), method: :delete do %>
+                              <%= @food.food_favorites.count %> いいね
+                            <% end %>
+                          </td>
+                        <% else %>
+                          <td>
+                            <%= link_to users_food_food_favorites_path(@food), method: :post do %>
+                              <%= @food.food_favorites.count %> いいね
+                            <% end %>
+                          </td>
+                        <% end %>
+                      </span>
+            <!-- ここまで -->
+              <!-- コメント表記 -->
+                        <table class="table table-hover table-inverse">
+                              <thead>
+                                <tr>
+                                  <th colspan="3"></th>
+                                </tr>
+                              </thead>
+                            <% @food.food_comments.each do |food_comment| %>
+                              <tbody>
+                                  <tr>
+                                    <td><%= link_to users_user_path(food_comment.user), class: 'hoge' do %>
+                                          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br>
+                                          <%= food_comment.user.name %>
+                                        <% end %></td>
+                                    <td><p><%= food_comment.food_comment %></p></td>
+                                    <td><% if food_comment.user == current_user %>
+                                      　 <%= link_to "削除", users_food_food_comment_path(food_comment.food, food_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                                        <% end %></td>
+                                  </tr>
+                              </tbody>
+                            <% end %>
+                        </table>
+              <!-- コメントここまで -->
+           <!-- コメント入力フォーム -->
+                  <%= form_for [:users,@food, @food_comment] do |f| %>
+                    <% if @food_comment.errors.any? %>
+                      <h3><%= @food_comment.errors.count %> errors prohibited this food from being saved</h3>
+                          <ul>
+                            <% @food_comment.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                    <% end %>
+                        <%= f.text_area :food_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                      <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+                  <% end %>
+        <!-- ここまで -->
+        </div>
+      </div>
   </div>
-
-
-
-<div>
-      <table>
-      <thead>
-        <tr>
-
-          <th colspan="3"></th>
-        </tr>
-        　<!-- いいねここから -->
-        <% if @food.food_favorited_by?(current_user) %>
-        <td>
-          <%= link_to users_food_food_favorites_path(@food), method: :delete do %>
-            <%= @food.food_favorites.count %> いいね
-          <% end %>
-        </td>
-        <% else %>
-        <td>
-          <%= link_to users_food_food_favorites_path(@food), method: :post do %>
-            <%= @food.food_favorites.count %> いいね
-          <% end %>
-          <!-- ここまで -->
-        </td>
-        <% end %>
-      </thead>
-      <% @food.food_comments.each do |food_comment| %>
-      <tbody>
-        <tr>
-          <td><%= link_to users_user_path(food_comment.user), class: 'hoge' do %>
-          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br><%= food_comment.user.name %><% end %></td>
-          <td><p><%= food_comment.food_comment %></p></td>
-          <td><% if food_comment.user == current_user %>
-            　 <%= link_to "削除", users_food_food_comment_path(food_comment.food, food_comment), method: :delete, class: "btn btn-danger pull-right" %><% end %></td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-              <!-- コメント本文 -->
-           <!-- <form> -->
-        <%= form_for [:users,@food, @food_comment] do |f| %>
-
-          <% if @food_comment.errors.any? %>
-          <h3><%= @food_comment.errors.count %> errors prohibited this food from being saved</h3>
-              <ul>
-                <% @food_comment.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-
-          <% end %>
-            <%= f.text_area :food_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-        <% end %>
-        <!-- </form> -->
-</div>
+</body>

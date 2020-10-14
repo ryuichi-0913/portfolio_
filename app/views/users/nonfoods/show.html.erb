@@ -1,72 +1,89 @@
-<p>アイデア投稿のページだよ</p>
-  <div>
-    <h2>NONfoods Idea</h2>
-            <p><%= @nonfood.nonfood_name %></p>
-            <span><%= attachment_image_tag @nonfood, :nonfood_image, size: '200x200',　format: 'jpeg' %></span>
-            <p><%= @nonfood.nonfood_introduction %></p>
-            <p><%= @nonfood.created_at.strftime('%Y/%m/%d') %></p>
-            <p></p>
-            <div>
-              <% if @user == current_user %>
-              	<%=link_to "編集",edit_users_nonfood_path(@nonfood),method: :get %>
-              <% end %>
-      		　<% if @user == current_user %>
-              	<%= link_to "削除",users_nonfood_path(@nonfood), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              <% end %>
-              <%= link_to "非食品一覧へ", users_nonfoods_path %>
 
-            </div>
 
+
+<body>
+  <div class="container">
+    <h2>非食品投稿詳細</h2>
+      <div class="row">
+        <div class="col-md-8">
+        <span style="display: block; text-align: center;">
+          <%= attachment_image_tag @nonfood, :nonfood_image, size: '250x250',　format: 'jpeg' %>
+        </span>
+    　　　　　　　<p class="showp1">非食品アイデア名</p>
+                <p class="showp2"><%= @nonfood.nonfood_name %></p>
+    　　　　　　　<p class="showp1">アイデア説明</p>
+                <p class="showp2"><%= @nonfood.nonfood_introduction %></p>
+    　　　　　　　<p class="showp1">登録日</p>
+                <p class="showp2"><%= @nonfood.created_at.strftime('%Y/%m/%d') %></p>
+                  　<div>
+        <!-- 編集ボタン表示 -->
+                      <% if @user == current_user %>
+                          <%= link_to "削除",users_nonfood_path(@nonfood), method: :delete, class: "btn btn-danger pull-right", "data-confirm" => "本当に削除しますか？" %>
+                      <% end %>
+                    　<% if @user == current_user %>
+                          <%=link_to "編集",edit_users_nonfood_path(@nonfood),method: :get, class: "btn btn-success pull-right" %>
+                      <% end %>
+                  　</div><br>
+                      <div style="text-align: right;" >
+                        <%= link_to "非食品一覧へ", users_nonfoods_path ,class: 'btn btn-info my-1 mb-5 px-5' %>
+                      </div>
+
+      　 <!--ここまで -->
+            <!-- いいね表示ここから -->
+                      <span style="display: block; text-align: left;">
+                        <% if @nonfood.nonfood_favorited_by?(current_user) %>
+                          <td>
+                            <%= link_to users_nonfood_nonfood_favorites_path(@nonfood), method: :delete do %>
+                              <%= @nonfood.nonfood_favorites.count %> いいね
+                            <% end %>
+                          </td>
+                        <% else %>
+                          <td>
+                            <%= link_to users_nonfood_nonfood_favorites_path(@nonfood), method: :post do %>
+                              <%= @nonfood.nonfood_favorites.count %> いいね
+                            <% end %>
+                          </td>
+                        <% end %>
+                      </span>
+            <!-- ここまで -->
+              <!-- コメント表記 -->
+                        <table class="table table-hover table-inverse">
+                              <thead>
+                                <tr>
+                                  <th colspan="3"></th>
+                                </tr>
+                              </thead>
+                            <% @nonfood.nonfood_comments.each do |nonfood_comment| %>
+                              <tbody>
+                                  <tr>
+                                    <td><%= link_to users_user_path(nonfood_comment.user), class: 'hoge' do %>
+                                          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br>
+                                          <%= nonfood_comment.user.name %>
+                                        <% end %></td>
+                                    <td><p><%= nonfood_comment.nonfood_comment %></p></td>
+                                    <td><% if nonfood_comment.user == current_user %>
+                                      　 <%= link_to "削除", users_nonfood_nonfood_comment_path(nonfood_comment.nonfood, nonfood_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                                        <% end %></td>
+                                  </tr>
+                              </tbody>
+                            <% end %>
+                        </table>
+              <!-- コメントここまで -->
+           <!-- コメント入力フォーム -->
+                  <%= form_for [:users,@nonfood, @nonfood_comment] do |f| %>
+                    <% if @nonfood_comment.errors.any? %>
+                      <h3><%= @nonfood_comment.errors.count %> errors prohibited this nonfood from being saved</h3>
+                          <ul>
+                            <% @nonfood_comment.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                    <% end %>
+                        <%= f.text_area :nonfood_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                      <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+                  <% end %>
+        <!-- ここまで -->
+        </div>
+      </div>
   </div>
-
-<div>
-      <table>
-      <thead>
-        <tr>
-          <th colspan="3"></th>
-        </tr>
-                <!-- いいねここから -->
-        <% if @nonfood.nonfood_favorited_by?(current_user) %>
-        <td>
-          <%= link_to users_nonfood_nonfood_favorites_path(@nonfood), method: :delete do %>
-            <%= @nonfood.nonfood_favorites.count %> いいね
-          <% end %>
-        </td>
-        <% else %>
-        <td>
-          <%= link_to users_nonfood_nonfood_favorites_path(@nonfood), method: :post do %>
-            <%= @nonfood.nonfood_favorites.count %> いいね
-          <% end %>
-        </td>
-        <% end %>
-      </thead>
-      <% @nonfood.nonfood_comments.each do |nonfood_comment| %>
-      <tbody>
-        <tr>
-          <td><%= link_to users_user_path(nonfood_comment.user), class: 'hoge' do %>
-          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br><%= nonfood_comment.user.name %><% end %></td>
-          <td><p><%= nonfood_comment.nonfood_comment %></p></td>
-          <td><% if nonfood_comment.user == current_user %>
-            　 <%= link_to "削除", users_nonfood_nonfood_comment_path(nonfood_comment.nonfood, nonfood_comment), method: :delete, class: "btn btn-danger pull-right" %><% end %></td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-              <!-- コメント本文 -->
-           <!-- <form> -->
-        <%= form_for [:users,@nonfood, @nonfood_comment] do |f| %>
-
-          <% if @nonfood_comment.errors.any? %>
-          <h3><%= @nonfood_comment.errors.count %> errors prohibited this nonfood from being saved</h3>
-              <ul>
-                <% @nonfood_comment.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-
-          <% end %>
-            <%= f.text_area :nonfood_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-        <% end %>
-        <!-- </form> -->
-</div>
+</body>
