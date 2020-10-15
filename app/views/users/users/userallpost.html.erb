@@ -43,9 +43,10 @@
                     </td>
                     <td><%=
                        if instance.respond_to? :food_name
-                        link_to "投稿情報を見る", users_food_path(@user)
+                        link_to "投稿情報を見ます", users_food_path(instance)
+
                        else
-                        link_to "投稿情報を見る", users_nonfood_path(@user)
+                        link_to "投稿情報を見る", users_nonfood_path(instance)
                        end %>
                     </td>
                   </tr>
