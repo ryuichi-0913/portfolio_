@@ -17,6 +17,9 @@
 @import "bootstrap";
 .nav-item {
 	color: white;
+    font-size: 18px;
+    padding-top: 30px;
+    text-align: center;
 }
 .cover-text {
 	display: table-cell;
@@ -26,7 +29,7 @@
 footer {
     width: 100%;
     color: white;
-    background-color: #4f122b;
+    background-color: #FFA500;
     text-align: center;
     height: 60px;
     padding: 20px;
@@ -65,4 +68,21 @@ body{
 .showp2{
     text-align: center;
     font-size: 15px;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #00CCFF;
+  border-radius: 15px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;
 }

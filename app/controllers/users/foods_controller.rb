@@ -21,7 +21,7 @@ class Users::FoodsController < ApplicationController
   end
 
   def index
-    @foods = Food.all
+    @foods = Food.page(params[:page]).reverse_order
     @user = current_user
   end
 
