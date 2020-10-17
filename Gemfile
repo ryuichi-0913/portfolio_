@@ -73,3 +73,8 @@ gem 'jquery-rails'
 gem "pry-rails"
 gem "pry-byebug"
 gem 'kaminari','~> 1.2.1'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
