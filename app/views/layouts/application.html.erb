@@ -23,16 +23,16 @@
             <nav>
               <ul class="nav navbar-nav navbar-light navbar-right">
                 <% if user_signed_in? %>
+                    <li class="nav-item"><%= link_to "マイページ", users_user_path(current_user), class: "glyphicon glyphicon-home home", style: "color:white;" %></li>
+                    <li class="nav-item"><%= link_to "食品投稿", users_foods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
+                    <li class="nav-item"><%= link_to "非食品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
+                    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                     <li class="nav-item1">
                     <%= form_tag(search_path, method: :get) do %>
                       <%= text_field_tag 'search[content]' %>
                       <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品記事" => "food", "雑貨品記事" => "nonfood" }) %>
                       <%= submit_tag '検索', class: "btn btn-primary" %>
                     <% end %>
-                    <li class="nav-item"><%= link_to "マイページ", users_user_path(current_user), class: "glyphicon glyphicon-home home", style: "color:white;" %></li>
-                    <li class="nav-item"><%= link_to "食品投稿", users_foods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
-                    <li class="nav-item"><%= link_to "非食品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
-                    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                 <% elsif admin_signed_in? %>
                     <li>管理者</li>
                     <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>

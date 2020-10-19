@@ -33,3 +33,6 @@ production:
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+#設定した環境変数の呼び出し
+  ENV['KEY']:
+  ENV['SECRET_KEY']:

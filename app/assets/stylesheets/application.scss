@@ -21,6 +21,11 @@
     padding-top: 30px;
     text-align: center;
 }
+.nav-item1{
+    position: absolute;
+    bottom: 0;
+    padding-right: 20px;
+}
 .cover-text {
 	display: table-cell;
 	vertical-align: middle;
@@ -36,7 +41,7 @@ footer {
     bottom: 0;
 }
 .topimage {
-	background-image:image-url('/assets/voice.jpg');
+	background-image:image-url('voice.jpg');
 	background-position:center;
 	background-size: cover;
     height: 680px;
@@ -86,3 +91,13 @@ body{
 .pagination>li>a:hover {
   border-radius: 15px;
 }
+.iine__button{
+    background: linear-gradient(to right, #feb400, #FFE300);
+    line-height: 42px;
+    color: #6d3701;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 18px;
+    border-radius: 100px;
+    font-weight: bold;
+ }

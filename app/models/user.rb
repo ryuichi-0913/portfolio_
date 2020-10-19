@@ -14,7 +14,7 @@ class User < ApplicationRecord
       has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
       has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
       has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
-
+      has_many :contact, dependent: :destroy
       attachment :user_image
 
       enum profession:[:profession_private, :unemployed, :worker, :housework]
@@ -35,3 +35,5 @@ class User < ApplicationRecord
           following_user.include?(user)
         end
 end
+
+

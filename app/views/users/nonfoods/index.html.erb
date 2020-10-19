@@ -27,13 +27,13 @@
           <% if nonfood.nonfood_favorited_by?(current_user) %>
           <td>
             <%= link_to users_nonfood_nonfood_favorites_path(nonfood), method: :delete do %>
-              <%= nonfood.nonfood_favorites.count %> いいね
+              <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
             <% end %>
           </td>
           <% else %>
           <td>
             <%= link_to users_nonfood_nonfood_favorites_path(nonfood), method: :post do %>
-              <%= nonfood.nonfood_favorites.count %> いいね
+              <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
             <% end %>
           </td>
           <% end %>

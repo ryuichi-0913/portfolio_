@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions'
+  devise_for :admins,
+      controllers: {
+        sessions: 'admins/sessions',
+        passwords: 'admins/passwords',
+        registrations: 'admins/registrations',
   }
-	namespace :admin do
+
+	namespace :admins do
     get 'home/about'
+    resources :contacts
 	end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
   root 'home#top'
@@ -22,7 +28,8 @@ Rails.application.routes.draw do
     get 'users/userallpost'
     get 'users/favolist'
 
-    resources :users, only: [:show, :edit, :update]
+    resources :users
+    resources :contacts
   	resources :foods do
       resource :food_favorites, only: [:create, :destroy]
       resources :food_comments, only: [:create, :destroy]
