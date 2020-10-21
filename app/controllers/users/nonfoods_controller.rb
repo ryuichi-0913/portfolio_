@@ -29,6 +29,8 @@ class Users::NonfoodsController < ApplicationController
     @nonfood = Nonfood.find(params[:id])
     @user = @nonfood.user
     @nonfood_comment = NonfoodComment.new
+    @nonfood_comments = @nonfood.nonfood_comments
+
   end
 
   def edit

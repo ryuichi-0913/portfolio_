@@ -5,12 +5,9 @@ class Users::NonfoodCommentsController < ApplicationController
     @nonfoodnew = Nonfood.new
     @nonfood_comment = current_user.nonfood_comments.new(nonfood_comment_params)
     @nonfood_comment.nonfood_id = @nonfood.id
-    if @nonfood_comment.save
-      redirect_to users_nonfood_path(@nonfood)
-  else
-     render "users/nonfoods/show"
+    @nonfood_comment.save
+    render "index"
   end
-end
 
   def destroy
   	NonfoodComment.find_by(id: params[:id], nonfood_id: params[:nonfood_id]).destroy

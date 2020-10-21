@@ -27,58 +27,20 @@
 
       　 <!--ここまで -->
             <!-- いいね表示ここから -->
-                      <span style="display: block; text-align: left;">
-                        <% if @food.food_favorited_by?(current_user) %>
-                          <td>
-                            <%= link_to users_food_food_favorites_path(@food), method: :delete do %>
-                              <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
-                            <% end %>
-                          </td>
-                        <% else %>
-                          <td>
-                            <%= link_to users_food_food_favorites_path(@food), method: :post do %>
-                              <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
-                            <% end %>
-                          </td>
-                        <% end %>
+                      <span class="food_<%= @food.id %>" style="display: block; text-align: left;">
+            <%= render 'food', food: @food %>
                       </span>
             <!-- ここまで -->
+            <%= @food_comments.count %>件コメント
               <!-- コメント表記 -->
-                        <table class="table table-hover table-inverse">
-                              <thead>
-                                <tr>
-                                  <th colspan="3"></th>
-                                </tr>
-                              </thead>
-                            <% @food.food_comments.each do |food_comment| %>
-                              <tbody>
-                                  <tr>
-                                    <td><%= link_to users_user_path(food_comment.user), class: 'hoge' do %>
-                                          <%= attachment_image_tag @user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg" %><br>
-                                          <%= food_comment.user.name %>
-                                        <% end %></td>
-                                    <td><p><%= food_comment.food_comment %></p></td>
-                                    <td><% if food_comment.user == current_user %>
-                                      　 <%= link_to "削除", users_food_food_comment_path(food_comment.food, food_comment), method: :delete, class: "btn btn-danger pull-right" %>
-                                        <% end %></td>
-                                  </tr>
-                              </tbody>
-                            <% end %>
+                        <table id="comments_area" class="table table-hover table-inverse">
+            <%= render partial: 'users/food_comments/index', locals: { food_comments: @food_comments } %>
+
                         </table>
               <!-- コメントここまで -->
            <!-- コメント入力フォーム -->
-                  <%= form_for [:users,@food, @food_comment] do |f| %>
-                    <% if @food_comment.errors.any? %>
-                      <h3><%= @food_comment.errors.count %> errors prohibited this food from being saved</h3>
-                          <ul>
-                            <% @food_comment.errors.full_messages.each do |message| %>
-                              <li><%= message %></li>
-                            <% end %>
-                          </ul>
-                    <% end %>
-                        <%= f.text_area :food_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-                      <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-                  <% end %>
+            <%= render partial: 'users/food_comments/form', locals: { food_comment: @food_comment, food: @food } %>
+
         <!-- ここまで -->
         </div>
       </div>

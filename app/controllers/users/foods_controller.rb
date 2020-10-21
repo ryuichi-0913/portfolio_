@@ -29,6 +29,7 @@ class Users::FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @user = @food.user
     @food_comment = FoodComment.new
+    @food_comments = @food.food_comments
   end
 
   def edit

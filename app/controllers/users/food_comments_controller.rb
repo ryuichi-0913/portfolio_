@@ -5,17 +5,13 @@ class Users::FoodCommentsController < ApplicationController
     @foodnew = Food.new
     @food_comment = current_user.food_comments.new(food_comment_params)
     @food_comment.food_id = @food.id
-    if @food_comment.save
-      redirect_to users_food_path(@food)
-  else
+    @food_comment.save
      render "index"
   end
-end
 
   def destroy
   	FoodComment.find_by(id: params[:id], food_id: params[:food_id]).destroy
-     render "index"
-
+    redirect_to request.referer
   end
 
   private
