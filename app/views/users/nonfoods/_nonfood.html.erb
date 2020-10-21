@@ -1,0 +1,25 @@
+        <td><%= link_to users_nonfood_path(nonfood) do %>
+              <%= attachment_image_tag nonfood, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg" %>
+            <% end %>
+           <%= link_to users_nonfood_path(nonfood) do %>
+              <%= nonfood.nonfood_name %>
+            <% end %>
+        </td>
+        <td>
+          <%= link_to nonfood.user.name, users_user_path(nonfood.user) %></td>
+        <td><%= nonfood.created_at.strftime('%Y/%m/%d') %></td>
+       <!-- いいねここから -->
+      <% if nonfood.nonfood_favorited_by?(current_user) %>
+      <td>
+        <%= link_to users_nonfood_nonfood_favorites_path(nonfood), method: :delete, remote: true do %>
+          <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
+        <% end %>
+      </td>
+      <% else %>
+      <td>
+        <%= link_to users_nonfood_nonfood_favorites_path(nonfood), method: :post, remote: true do %>
+          <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
+        <% end %>
+      </td>
+      <% end %>
+      <!-- ここまで -->
