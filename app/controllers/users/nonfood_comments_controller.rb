@@ -6,12 +6,12 @@ class Users::NonfoodCommentsController < ApplicationController
     @nonfood_comment = current_user.nonfood_comments.new(nonfood_comment_params)
     @nonfood_comment.nonfood_id = @nonfood.id
     @nonfood_comment.save
-    render "index"
   end
 
   def destroy
   	NonfoodComment.find_by(id: params[:id], nonfood_id: params[:nonfood_id]).destroy
-    redirect_to request.referer
+    @nonfood = Nonfood.find(params[:nonfood_id])
+    @nonfood_comments = @nonfood.nonfood_comments
   end
 
   private

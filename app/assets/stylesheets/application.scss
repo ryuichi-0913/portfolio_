@@ -101,3 +101,41 @@ body{
     border-radius: 100px;
     font-weight: bold;
  }
+
+/*カードの設定*/
+.card-body{
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.card-img-top{
+      display: inline-block;
+      border-radius: 4%;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+}
+.card-subtitle {
+    margin-top: -0.375rem;
+    margin-bottom: 0;
+}
+.card-text:last-child{
+    margin-bottom: 0;
+}
+.card {
+    position: relative;
+      display: inline-flex;
+
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 4%;
+    margin-bottom: 1%;
+    margin-right: 3%;
+}
+.foodtd1{
+  display: table-cell;
+  vertical-align: middle;}

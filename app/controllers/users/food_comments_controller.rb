@@ -6,12 +6,12 @@ class Users::FoodCommentsController < ApplicationController
     @food_comment = current_user.food_comments.new(food_comment_params)
     @food_comment.food_id = @food.id
     @food_comment.save
-     render "index"
   end
 
   def destroy
   	FoodComment.find_by(id: params[:id], food_id: params[:food_id]).destroy
-    redirect_to request.referer
+    @food = Food.find(params[:food_id])
+    @food_comments = @food.food_comments
   end
 
   private

@@ -23,6 +23,8 @@ class Users::FoodsController < ApplicationController
   def index
     @foods = Food.page(params[:page]).reverse_order
     @user = current_user
+    @foodall_ranks = Food.find(FoodFavorite.group(:food_id).order('count(food_id) desc').limit(3).pluck(:food_id))
+
   end
 
   def show

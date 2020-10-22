@@ -25,12 +25,12 @@
                 <% if user_signed_in? %>
                     <li class="nav-item"><%= link_to "マイページ", users_user_path(current_user), class: "glyphicon glyphicon-home home", style: "color:white;" %></li>
                     <li class="nav-item"><%= link_to "食品投稿", users_foods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
-                    <li class="nav-item"><%= link_to "非食品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
+                    <li class="nav-item"><%= link_to "雑貨品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
                     <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                     <li class="nav-item1">
                     <%= form_tag(search_path, method: :get) do %>
                       <%= text_field_tag 'search[content]' %>
-                      <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品記事" => "food", "雑貨品記事" => "nonfood" }) %>
+                      <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品投稿" => "food", "雑貨品投稿" => "nonfood" }) %>
                       <%= submit_tag '検索', class: "btn btn-primary" %>
                     <% end %>
                 <% elsif admin_signed_in? %>
@@ -40,7 +40,7 @@
                     <li>ゲストユーザー</li>
                     <li class="nav-item"><%= link_to "このサイトについて", root_path, class: "glyphicon glyphicon-link about", style: "color:white;"  %></li>
                     <li class="nav-item"><%= link_to "食品投稿", users_foods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
-                    <li class="nav-item"><%= link_to "非食品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
+                    <li class="nav-item"><%= link_to "雑貨品投稿", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
                     <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up", style: "color:white;"  %></li>
                     <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in", style: "color:white;"  %></li>
                 <% end %>
