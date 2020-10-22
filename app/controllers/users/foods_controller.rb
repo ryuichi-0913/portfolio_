@@ -5,6 +5,8 @@ class Users::FoodsController < ApplicationController
   def new
     @user = current_user
     @food = Food.new
+    @food.tag_list.add("awesome", "slick")
+    @food.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -32,11 +34,14 @@ class Users::FoodsController < ApplicationController
     @user = @food.user
     @food_comment = FoodComment.new
     @food_comments = @food.food_comments
+
   end
 
   def edit
     @user = current_user
     @food = Food.find(params[:id])
+    @food.tag_list.add("awesome", "slick")
+    @food.tag_list.remove("awesome", "slick")
     if @food.user != current_user
       redirect_to users_foods_path
     end
@@ -60,6 +65,6 @@ class Users::FoodsController < ApplicationController
 
     private
   def food_params
-    params.require(:food).permit(:food_image, :food_name, :food_introduction)
+    params.require(:food).permit(:food_image, :food_name, :food_introduction, :tag_list)
   end
 end

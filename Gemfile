@@ -73,6 +73,7 @@ gem 'jquery-rails'
 gem "pry-rails"
 gem "pry-byebug"
 gem 'kaminari','~> 1.2.1'
+gem 'acts-as-taggable-on'
 
 gem 'dotenv-rails'
 group :production do

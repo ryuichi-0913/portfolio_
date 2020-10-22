@@ -2,7 +2,7 @@
   <div class="container">
     <div class="low">
       <h1 style="text-align: center;">食品アイデア投稿</h1>
-       <h2 style="padding-left: 30px;">食品アイデアTOP３(いいね編)</h2>
+       <h2 style="padding-left: 30px; ">食品アイデアTOP３(いいね編)</h2>
           <!-- ランキングTOP３  -->
           <% @foodall_ranks.each do |foodall_rank| %>
               <div class="card" >
@@ -14,6 +14,7 @@
                       <h4 class="card-title"><%= link_to users_food_path(foodall_rank) do %><%= foodall_rank.food_name %>
                               <% end %></h4>
                       <p class="card-text"><%= link_to foodall_rank.user.name, users_user_path(foodall_rank.user) %></p>
+                      <span class="badge badge-secondary" ><%= foodall_rank.tag_list %></span>
                     <div class = "iine__button">♡️<%= foodall_rank.food_favorites.count %></div>
                     <div><%= foodall_rank.created_at.strftime('%Y/%m/%d') %></div>
                   </div>
@@ -22,12 +23,13 @@
           <!-- ランキングここまで -->
           <br><br><br><br>
           <!-- 一覧投稿 -->
-            <h2 style="padding-left: 30px;">みんなの食品アイデア投稿</h2>
+            <h2 style="padding-left: 30px; ">みんなの食品アイデア投稿</h2>
                 <table class="table table-hover table-inverse">
                   <thead>
                     <tr>
                       <th>アイデア画像</th>
                       <th>アイデア名</th>
+                      <th>ジャンル</th>
                       <th>投稿者名</th>
                       <th>投稿日時</th>
                       <th>いいね</th>
@@ -42,6 +44,7 @@
                         <td class="foodtd1"><%= link_to users_food_path(food) do %>
                               <%= food.food_name %>
                             <% end %></td>
+                        <td class="badge badge-secondary" ><%= food.tag_list %></td>
                         <td class="foodtd1">
                           <%= link_to food.user.name, users_user_path(food.user) %></td>
                         <td><%= food.created_at.strftime('%Y/%m/%d') %></td>

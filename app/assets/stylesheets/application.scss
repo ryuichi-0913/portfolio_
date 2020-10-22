@@ -65,6 +65,32 @@ footer {
 body{
     background: -webkit-radial-gradient(circle, #fefafa 0%, #dee3e8 100%);
 }
+h1 {
+  position: relative;
+  color: #333;
+  margin: 47px 0;
+  text-shadow: 0 0 2px white;
+}
+h1:before {
+  content: "";
+  position: absolute;
+  background: #ffd69d;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: -1;
+}
+h2 {
+  position: relative;
+  padding: 0.1em 0.5em;
+  background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+  background: linear-gradient(to right, rgb(255, 186, 115), transparent);
+  color: #545454;
+}
 .showp1{
     padding-left: 60px;
     font-weight: bold;

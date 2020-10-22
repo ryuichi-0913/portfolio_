@@ -5,11 +5,15 @@
 			<div class="col-md-5">
 				<%= form_for(@food, url: users_food_path ) do |f| %>
 					<div><%= f.label :food_image, "食品イメージ画像" %>
-						<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no-image.png", style: "height: 200px; width:200px;"  %><br>
+						<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no-image.jpg", style: "height: 200px; width:200px;"  %><br>
 						画像選択<%= f.attachment_field :food_image %></div>
 				　　<div>
 						<%= f.label :food_name, "アイデア名（食品）" %>
 				　　		<%= f.text_field :food_name, :size=>"60" %></div>
+					<div>
+						 <%= f.label :food, :タグ付け %>
+						 <%= f.text_field :tag_list, value: @food.tag_list.join(','), :size=>"60" %>
+					</div>
 				  　<div>
 				  		<%= f.label :food_introduction, "商品説明" %><br>
 				  　　	<%= f.text_area :food_introduction, :size=>"60x11" %>

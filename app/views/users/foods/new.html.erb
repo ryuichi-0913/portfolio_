@@ -1,6 +1,6 @@
 <body>
     <div class="container">
-    　<h1 class="toph1" style="margin-bottom: 30px;">食品アイデア新規投稿</h1>
+    　<h2 class="toph1" style="margin-bottom: 30px;">食品アイデア新規投稿</h2>
         <div class="row">
         	<div class="col-md-5">
     <!-- 新規投稿フォーム -->
@@ -11,6 +11,10 @@
 					</div>
                     <div><%= f.label :food_name, "アイデア名（食品）" %>
 					     <%= f.text_field :food_name, :size=>"60" %>
+					</div>
+					<div>
+						 <%= f.label :food, :タグ付け %>
+						 <%= f.text_field :tag_list, value: @food.tag_list.join(','), :size=>"60" %>
 					</div>
                     <div><%= f.label :food_introduction, "商品説明" %>
 						 <%= f.text_area :food_introduction, :size=>"60x11" %>
@@ -23,3 +27,4 @@
 		</div>
     </div>
 </body>
+
