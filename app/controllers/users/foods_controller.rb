@@ -18,7 +18,7 @@ class Users::FoodsController < ApplicationController
     else
     @user = current_user
     @foods = Food.all
-    render "index"
+    redirect_to users_foods_path
     end
   end
 
@@ -26,7 +26,6 @@ class Users::FoodsController < ApplicationController
     @foods = Food.page(params[:page]).reverse_order
     @user = current_user
     @foodall_ranks = Food.find(FoodFavorite.group(:food_id).order('count(food_id) desc').limit(3).pluck(:food_id))
-
   end
 
   def show

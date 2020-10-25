@@ -5,6 +5,10 @@ class Nonfood < ApplicationRecord
     has_many :nonfood_favorites, dependent: :destroy
 	attachment :nonfood_image
 
+    validates :nonfood_image_id, presence: true
+    validates :nonfood_name, presence: true, length: { maximum: 20 }
+    validates :nonfood_introduction, presence: true, length: { maximum: 300 }
+
 	acts_as_taggable
 
   def nonfood_favorited_by?(user)

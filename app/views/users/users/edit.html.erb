@@ -5,6 +5,7 @@
             <div class="col-md-5">
             <!-- 入力フォーム -->
                 <%= form_for(@user, url: users_user_path ) do |f| %>
+                <%= render 'layouts/error_messages', resource: @user %>
                     <div>
                 	   <%= f.label :user_image, "ユーザー画像" %>
                 	   <%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;}" %><br>

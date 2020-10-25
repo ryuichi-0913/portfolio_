@@ -18,8 +18,8 @@
           <div class="nav navbar-nav navbar-left">
                <h2><%= link_to 'TunaguKoe', root_path, class: "header-logo", style: "color:white; padding-left:100px; font-size: 50px;" %></h2>
           </div>
-            <div class="collapse navbar-collapse flex-column navbar-right" id="navbarSupportedContent">
-                <div class="site-description">
+            <div class="collapse navbar-collapse flex-column navbar-right" id="navbarSupportedContent" >
+                <div class="site-description" style="margin-left: 40%; ">
                   <%= form_tag(search_path, method: :get) do %>
                     <%= text_field_tag 'search[content]' %>
                     <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品投稿" => "food", "雑貨品投稿" => "nonfood" }) %>
@@ -28,14 +28,14 @@
 
                 </div>
                   <nav>
-                    <ul class="nav navbar-nav navbar-light navbar-center">
+                    <ul class="nav navbar-nav navbar-light navbar-center" style=" padding-right: 100px;">
                       <% if user_signed_in? %>
                           <li class="nav-item"><%= link_to "マイページ", users_user_path(current_user), class: "glyphicon glyphicon-home home", style: "color:white;" %></li>
                           <li class="nav-item"><%= link_to "食品投稿一覧", users_foods_path, class: "glyphicon glyphicon-cutlery", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "雑貨品投稿一覧", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                           <li class="nav-item ">
-                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"　>
                               投稿する <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">

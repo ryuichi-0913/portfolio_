@@ -18,7 +18,8 @@ class Users::NonfoodsController < ApplicationController
     else
     @user = current_user
     @nonfoods = Nonfood.all
-    render "index"
+    redirect_to users_nonfoods_path
+
     end
   end
 
