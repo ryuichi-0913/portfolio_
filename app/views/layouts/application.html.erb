@@ -16,10 +16,10 @@
     <div class="container">
       <header class="navbar navbar-fixed-top navbar-inverse" style=" background-color: #FFA500;">
           <div class="nav navbar-nav navbar-left">
-               <h2><%= link_to 'TunaguKoe', root_path, class: "header-logo", style: "color:white; padding-left:100px; font-size: 50px;" %></h2>
+               <h2><%= link_to 'TunaguKoe', root_path, class: "header-logo", style: "color:white; padding-left:100px; font-size: 50px; text-decoration: none;" %></h2>
           </div>
             <div class="collapse navbar-collapse flex-column navbar-right" id="navbarSupportedContent" >
-                <div class="site-description" style="margin-left: 40%; ">
+                <div class="site-description" style="margin-left: 49%; ">
                   <%= form_tag(search_path, method: :get) do %>
                     <%= text_field_tag 'search[content]' %>
                     <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品投稿" => "food", "雑貨品投稿" => "nonfood" }) %>
@@ -36,7 +36,7 @@
                           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                           <li class="nav-item ">
                             <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"　>
-                              投稿する <span class="caret"></span>
+                              さっそく投稿 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
                               <li><%= link_to "食品投稿", new_users_food_path %></li>

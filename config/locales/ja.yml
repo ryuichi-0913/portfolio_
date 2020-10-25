@@ -27,3 +27,19 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+  activerecord:
+    models:
+      user: 利用者
+      food: 食品
+      nonfood: 雑貨品
+    attributes:
+      user:
+        name: 名前
+        user_introduction: 自己紹介
+        email: メールアドレス
+      food:
+        food_name: 食品アイデア名
+        food_introduction: 食品説明
+      nonfood:
+        nonfood_name: 雑貨品アイデア名
+        nonfood_introduction: 雑貨品説明

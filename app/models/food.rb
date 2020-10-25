@@ -5,8 +5,7 @@ class Food < ApplicationRecord
   has_many :food_favorites, dependent: :destroy
   attachment :food_image
 
-  validates :food_image_id, presence: true
-  validates :food_name, presence: true, length: { maximum: 20 }
+  validates :food_name, presence: true
   validates :food_introduction, presence: true, length: { maximum: 300 }
 
   acts_as_taggable

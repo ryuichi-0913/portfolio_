@@ -2,11 +2,11 @@ class Users::NonfoodsController < ApplicationController
 
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
 
- def new
+  def new
     @user = current_user
-    @nonfood = Nonfood.new
-    @nonfood.tag_list.add("awesome", "slick")
-    @nonfood.tag_list.remove("awesome", "slick")
+    @nonfood_new = Nonfood.new
+    @nonfood_new.tag_list.add("awesome", "slick")
+    @nonfood_new.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -14,12 +14,13 @@ class Users::NonfoodsController < ApplicationController
     @nonfood.user = current_user
 
     if @nonfood.save
-    redirect_to users_nonfood_path(@nonfood)
+      redirect_to users_nonfood_path(@nonfood)
     else
-    @user = current_user
-    @nonfoods = Nonfood.all
-    redirect_to users_nonfoods_path
-
+      @user = current_user
+      @nonfood_new = Nonfood.new
+      @nonfood_new.tag_list.add("awesome", "slick")
+      @nonfood_new.tag_list.remove("awesome", "slick")
+      render 'new'
     end
   end
 
@@ -27,7 +28,6 @@ class Users::NonfoodsController < ApplicationController
     @nonfoods = Nonfood.page(params[:page]).reverse_order
     @user = current_user
     @nonfoodall_ranks = Nonfood.find(NonfoodFavorite.group(:nonfood_id).order('count(nonfood_id) desc').limit(3).pluck(:nonfood_id))
-
   end
 
   def show
@@ -69,4 +69,3 @@ class Users::NonfoodsController < ApplicationController
     params.require(:nonfood).permit(:nonfood_image, :nonfood_name, :nonfood_introduction, :tag_list)
   end
 end
-

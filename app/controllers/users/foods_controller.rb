@@ -4,9 +4,9 @@ class Users::FoodsController < ApplicationController
 
   def new
     @user = current_user
-    @food = Food.new
-    @food.tag_list.add("awesome", "slick")
-    @food.tag_list.remove("awesome", "slick")
+    @food_new = Food.new
+    @food_new.tag_list.add("awesome", "slick")
+    @food_new.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -14,11 +14,13 @@ class Users::FoodsController < ApplicationController
     @food.user = current_user
 
     if @food.save
-    redirect_to users_food_path(@food)
+      redirect_to users_food_path(@food)
     else
-    @user = current_user
-    @foods = Food.all
-    redirect_to users_foods_path
+      @user = current_user
+      @food_new = Food.new
+      @food_new.tag_list.add("awesome", "slick")
+      @food_new.tag_list.remove("awesome", "slick")
+      render 'new'
     end
   end
 
