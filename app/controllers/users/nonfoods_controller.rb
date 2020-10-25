@@ -1,10 +1,12 @@
 class Users::NonfoodsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
 
  def new
     @user = current_user
     @nonfood = Nonfood.new
+    @nonfood.tag_list.add("awesome", "slick")
+    @nonfood.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -38,6 +40,8 @@ class Users::NonfoodsController < ApplicationController
   def edit
     @user = current_user
     @nonfood = Nonfood.find(params[:id])
+    @nonfood.tag_list.add("awesome", "slick")
+    @nonfood.tag_list.remove("awesome", "slick")
     if @nonfood.user != current_user
       redirect_to users_nonfoods_path
     end
@@ -61,7 +65,7 @@ class Users::NonfoodsController < ApplicationController
 
     private
   def nonfood_params
-    params.require(:nonfood).permit(:nonfood_image, :nonfood_name, :nonfood_introduction)
+    params.require(:nonfood).permit(:nonfood_image, :nonfood_name, :nonfood_introduction, :tag_list)
   end
 end
 

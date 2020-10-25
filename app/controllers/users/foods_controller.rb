@@ -1,6 +1,6 @@
 class Users::FoodsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
 
   def new
     @user = current_user

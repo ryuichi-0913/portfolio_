@@ -33,6 +33,7 @@
                         instance.user.name
                       else
                       end %></td>
+                    <td class="badge badge-secondary" ><%=instance.tag_list %></td>
                     <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
                     <td><%=
                        if instance.respond_to? :food_name

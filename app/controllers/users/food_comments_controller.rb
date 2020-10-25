@@ -1,7 +1,6 @@
 class Users::FoodCommentsController < ApplicationController
   def create
     @food = Food.find(params[:food_id])
-    @user = @food.user
     @foodnew = Food.new
     @food_comment = current_user.food_comments.new(food_comment_params)
     @food_comment.food_id = @food.id

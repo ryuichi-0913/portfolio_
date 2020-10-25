@@ -1,13 +1,19 @@
-        <% if @food.food_favorited_by?(current_user) %>
-          <td>
-            <%= link_to users_food_food_favorites_path(@food), method: :delete, remote: true do %>
-              <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
-            <% end %>
-          </td>
-        <% else %>
-          <td>
-            <%= link_to users_food_food_favorites_path(@food), method: :post, remote: true do %>
-              <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
-            <% end %>
-          </td>
-        <% end %>
+<% if current_user.present? %>
+  <% if @food.food_favorited_by?(current_user) %>
+    <td>
+      <%= link_to users_food_food_favorites_path(@food), method: :delete, remote: true do %>
+        <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
+      <% end %>
+    </td>
+  <% else %>
+    <td>
+      <%= link_to users_food_food_favorites_path(@food), method: :post, remote: true do %>
+        <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
+      <% end %>
+    </td>
+  <% end %>
+<% else %>
+    <td>
+      <div class = "iine__button">♡️<%= @food.food_favorites.count %></div>
+    </td>
+<% end %>

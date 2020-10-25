@@ -48,7 +48,6 @@
                         <td class="foodtd1">
                           <%= link_to food.user.name, users_user_path(food.user) %></td>
                         <td><%= food.created_at.strftime('%Y/%m/%d') %></td>
-                       <!-- いいねここから -->
                         <td class="foodtd1">
                           <div class = "iine__button">♡️<%= food.food_favorites.count %></div>
                         </td>

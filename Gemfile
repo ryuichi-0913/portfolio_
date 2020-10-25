@@ -74,6 +74,7 @@ gem "pry-rails"
 gem "pry-byebug"
 gem 'kaminari','~> 1.2.1'
 gem 'acts-as-taggable-on'
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do

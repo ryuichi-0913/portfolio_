@@ -5,7 +5,7 @@
 			<div class="col-md-5">
 				<%= form_for(@food, url: users_food_path ) do |f| %>
 					<div><%= f.label :food_image, "食品イメージ画像" %>
-						<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no-image.jpg", style: "height: 200px; width:200px;"  %><br>
+						<%= attachment_image_tag @food, :food_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %><br>
 						画像選択<%= f.attachment_field :food_image %></div>
 				　　<div>
 						<%= f.label :food_name, "アイデア名（食品）" %>
@@ -26,3 +26,22 @@
 		</div>
 	</div>
 </body>
+
+
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('.food_image').attr('src', e.target.result);　//取得したurlにアップロード画像のurlを挿入
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  // inputのidから情報の取得
+  $("#food_food_image").change(function(){
+    readURL(this);
+  });
+});
+</script>

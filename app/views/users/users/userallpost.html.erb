@@ -7,6 +7,7 @@
               <tr>
                   <th>アイデア画像</th>
                   <th>アイデア名</th>
+                  <th>タグ</th>
                   <th>投稿日時</th>
                   <th>いいね</th>
                   <th></th>
@@ -21,9 +22,9 @@
     　　　判定起点はfood_name等の同意義を持つカラムをrespond_to後に配置　条件分岐で正しい情報に基づき表示させる -->
                     <td><%=
                         if instance.respond_to? :food_image_id
-                          attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                          attachment_image_tag instance, :food_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
                         else
-                          attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                          attachment_image_tag instance, :nonfood_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
                         end%>
                     </td>
                     <td><%=
@@ -33,6 +34,7 @@
                           instance[:nonfood_name]
                         end%>
                     </td>
+                    <td class="badge badge-secondary" ><%=instance.tag_list %></td>
                     <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
                     <td><%=
                         if instance.respond_to? :food_name
@@ -43,10 +45,10 @@
                     </td>
                     <td><%=
                        if instance.respond_to? :food_name
-                        link_to "投稿情報を見ます", users_food_path(instance)
+                        link_to "詳細を見る", users_food_path(instance)
 
                        else
-                        link_to "投稿情報を見る", users_nonfood_path(instance)
+                        link_to "詳細を見る", users_nonfood_path(instance)
                        end %>
                     </td>
                   </tr>

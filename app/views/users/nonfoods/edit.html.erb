@@ -1,15 +1,19 @@
 <body>
 	<div class="container">
-	 <h2><b><%= @user.name %></b> さんの非食品編集ページ</h2>
+	 <h2><b><%= @user.name %></b> さんの編集ページ</h2>
 	    <div class="row">
 			<div class="col-md-5">
 				<%= form_for(@nonfood, url: users_nonfood_path ) do |f| %>
-					<div><%= f.label :nonfood_image, "非食品イメージ画像" %>
-						<%= attachment_image_tag @nonfood, :nonfood_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %><br>
+					<div><%= f.label :nonfood_image, "イメージ画像" %>
+						<%= attachment_image_tag @nonfood, :nonfood_image, format: "jpeg", id: "img_prev", fallback: "no-image.jpg", style: "height: 200px; width:200px;"  %><br>
 						画像選択<%= f.attachment_field :nonfood_image %></div>
 				　　<div>
-						<%= f.label :nonfood_name, "アイデア名（非食品）" %>
+						<%= f.label :nonfood_name, "アイデア名（）" %>
 				　　		<%= f.text_field :nonfood_name, :size=>"60" %></div>
+					<div>
+						 <%= f.label :nonfood, :タグ付け %>
+						 <%= f.text_field :tag_list, value: @nonfood.tag_list.join(','), :size=>"60" %>
+					</div>
 				  　<div>
 				  		<%= f.label :nonfood_introduction, "商品説明" %><br>
 				  　　	<%= f.text_area :nonfood_introduction, :size=>"60x11" %>
@@ -22,3 +26,21 @@
 		</div>
 	</div>
 </body>
+
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('.nonfood_image').attr('src', e.target.result);　//取得したurlにアップロード画像のurlを挿入
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  // inputのidから情報の取得
+  $("#nonfood_nonfood_image").change(function(){
+    readURL(this);
+  });
+});
+</script>
