@@ -7,14 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   name: 'testtest',
-   email: 'test@test',
-   password: '111111',
+   name: 'テスト花子',
+   email: 'a@a',
+   password: 'aaaaaa',
 )
 
 User.create!(
-   email: "test1@test1.com",
-   name: "スズキ",
-   password: "testtest1",
-   password_confirmation: "testtest1",
+   email: "b@b",
+   name: "テスト太郎",
+   password: "bbbbbb",
    )
+
+   Food.create!(
+   	[
+   				{
+                  food_name:"パズルチョコ",
+                  food_introduction: "自家製のチョコレートに生クリームを混ぜ合わせ作りました",
+                  food_image: open("./app/assets/images/chain.png")
+                 },
+   				{
+                  food_name:"壁のようなケーキ",
+                  food_introduction: "かべのように立ちはだかるケーキ",
+                  food_image: open("./app/assets/images/hear.jpg")
+                 },
+   				{
+                  food_name:"テスト３",
+                  food_introduction: "テキストテキストテキストテキスト",
+                  food_image: open("./app/assets/images/hear.jpg")
+                 },
+	]
+  	)
