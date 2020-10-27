@@ -1,71 +1,79 @@
-<body>
-  <div class="container">
-    <div class="low">
-      <h1 style="text-align: center;">雑貨品アイデア投稿</h1>
-
-        <% if flash[:error].present? %>
-    <ul class="errors">
-      <% flash[:error].each do |e| %>
-        <li><%= e %></li>
-      <% end %>
-    </ul>
-  <% end %>
-       <h2 style="padding-left: 30px; ">雑貨品アイデアTOP３(いいね編)</h2>
-          <!-- ランキングTOP３  -->
-          <% @nonfoodall_ranks.each do |nonfoodall_rank| %>
-              <div class="card" >
-                <span class="card-img-top"><%= link_to users_nonfood_path(nonfoodall_rank) do %>
-                            <%= attachment_image_tag nonfoodall_rank, :nonfood_image, size: '330x330',　format: 'jpeg', fallback: "no_image.jpg" %>
-                          <% end %>
-                </span>
-                  <div class="card-body">
-                      <h4 class="card-title"><%= link_to users_nonfood_path(nonfoodall_rank) do %><%= nonfoodall_rank.nonfood_name %>
-                              <% end %></h4>
-                      <p class="card-text"><%= link_to nonfoodall_rank.user.name, users_user_path(nonfoodall_rank.user) %></p>
-                      <div style="padding-bottom: 5px"><span class="badge badge-secondary" ><%= nonfoodall_rank.tag_list %></span><%= nonfoodall_rank.nonfood_comments.count %>件コメント</div>
-                    <div class = "iine__button text-right">♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
-                    <div><p class="text-right"><%= nonfoodall_rank.created_at.strftime('%Y/%m/%d') %></p></div>
-                  </div>
-              </div>
+<div class="container">
+  <div class="low">
+    <h1 style="text-align: center;">雑貨品アイデア投稿</h1>
+      <% if flash[:error].present? %>
+        <ul class="errors">
+          <% flash[:error].each do |e| %>
+            <li><%= e %></li>
           <% end %>
-          <!-- ランキングここまで -->
-          <br><br><br><br>
-          <!-- 一覧投稿 -->
-            <h2 style="padding-left: 30px; ">みんなの雑貨品アイデア投稿</h2>
-                <table class="table table-hover table-inverse">
-                  <thead>
-                    <tr>
-                      <th>アイデア画像</th>
-                      <th>アイデア名</th>
-                      <th>ジャンル</th>
-                      <th>投稿者名</th>
-                      <th>投稿日時</th>
-                      <th>いいね</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @nonfoods.each do |nonfood|%>
-                      <tr>
-                        <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
-                              <%= attachment_image_tag nonfood, :nonfood_image, size: '150x150',　format: 'jpeg', fallback: "no_image.jpg" %>
-                            <% end %></td>
-                        <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
-                              <%= nonfood.nonfood_name %>
-                            <% end %></td>
-                        <td><span class="badge badge-secondary"><%= nonfood.tag_list %></span></td>
-                        <td class="nonfoodtd1">
-                          <%= link_to nonfood.user.name, users_user_path(nonfood.user) %></td>
-                        <td><%= nonfood.created_at.strftime('%Y/%m/%d') %></td>
-                        <td class="nonfoodtd1">
-                          <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
-                        </td>
-                     </tr>
-                  　<% end %>
-                  </tbody>
-                </table>
-          <!-- 一覧ここまで -->
-          <span style="display: block; text-align: center;"><%= paginate @nonfoods %></span>
-    </div>
+        </ul>
+      <% end %>
+    <h2 style="padding-left: 30px; ">雑貨品アイデアTOP３(いいね編)</h2>
+      <!-- ランキングTOP３  -->
+      <% @nonfoodall_ranks.each.with_index(1) do |nonfoodall_rank,i| %>
+        <div class="card" >
+          <div class="card-img-top"><%= link_to users_nonfood_path(nonfoodall_rank) do %>
+            <%= attachment_image_tag nonfoodall_rank, :nonfood_image, size: '330x330',　format: 'jpeg', fallback: "no_image.jpg" %>
+          <% end %>
+          <p><%="#{i}位"%></p>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to users_nonfood_path(nonfoodall_rank) do %>
+              <%= nonfoodall_rank.nonfood_name %>
+            <% end %></h4>
+            <p class="card-text">
+              <%= link_to nonfoodall_rank.user.name, users_user_path(nonfoodall_rank.user) %></p>
+            <div style="padding-bottom: 5px">
+              <span class="badge badge-secondary" >
+                <%= nonfoodall_rank.tag_list %></span>
+                <%= nonfoodall_rank.nonfood_comments.count %>件コメント
+            </div>
+            <div class = "iine__button text-right">
+              ♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
+            <div><p class="text-right">
+              <%= nonfoodall_rank.created_at.strftime('%Y/%m/%d') %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- ランキングここまで -->
+      <br><br><br><br>
+      <!-- 一覧投稿 -->
+      <h2 style="padding-left: 30px; ">みんなの雑貨品アイデア投稿</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>アイデア画像</th>
+            <th>アイデア名</th>
+            <th>ジャンル</th>
+            <th>投稿者名</th>
+            <th>投稿日時</th>
+            <th>いいね</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @nonfoods.each do |nonfood|%>
+            <tr>
+              <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
+                <%= attachment_image_tag nonfood, :nonfood_image, size: '150x150',　format: 'jpeg', fallback: "no_image.jpg" %>
+              <% end %></td>
+              <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
+                <%= nonfood.nonfood_name %>
+              <% end %></td>
+              <td><span class="badge badge-secondary">
+                <%= nonfood.tag_list %></span></td>
+              <td class="nonfoodtd1">
+                <%= link_to nonfood.user.name, users_user_path(nonfood.user) %></td>
+              <td><%= nonfood.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="nonfoodtd1">
+                <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
+              </td>
+           </tr>
+        　<% end %>
+        </tbody>
+      </table>
+      <!-- 一覧ここまで -->
+   <span style="display: block; text-align: center;"><%= paginate @nonfoods %></span>
   </div>
-</body>
+</div>
 

@@ -9,37 +9,14 @@
         </ul>
       <% end %>
     <h2 style="padding-left: 30px; ">食品アイデアTOP３(いいね編)</h2>
-
-  <% lastfood_Favorite = 0 %>
-  <% j = 1 %>
- <% @foodall_ranks.with_index(1) do |foodall_ranking, i| %>
-   <% if i == 1 %>
-     <% lastfood_Favorite = foodall_ranking.food_favorites.count %>
-   <% end %>
-   <% if foodall_ranking.food_favorites.count != lastfood_Favorite %>
-     <% j = i %>
-     第<%= j %>位
-     <%= foodall_ranking.body %>
-     いいね数：<%= foodall_ranking.food_favorites.count %>
-     <% lastFavorite = foodall_ranking.food_favorites.count %>
-   <% else %>
-     <% lastfood_Favorite = foodall_ranking.food_favorites.count %>
-     第<%= j %>位
-     <%= foodall_ranking.body %>
-     いいね数：<%= foodall_ranking.food_favorites.count %>
-    <% end %>
-  <br>
- <% end %>
-
-
-
       <!-- ランキングTOP３  -->
-      <% @foodall_ranks.each do |foodall_rank| %>
+      <% @foodall_ranks.each.with_index(1) do |foodall_rank,i| %>
         <div class="card" >
-          <span class="card-img-top"><%= link_to users_food_path(foodall_rank) do %>
+          <div class="card-img-top"><%= link_to users_food_path(foodall_rank) do %>
             <%= attachment_image_tag foodall_rank, :food_image, size: '330x330',　format: 'jpeg', fallback: "no_image.jpg" %>
           <% end %>
-          </span>
+          <p><%="#{i}位"%></p>
+          </div>
           <div class="card-body">
             <h4 class="card-title"><%= link_to users_food_path(foodall_rank) do %>
               <%= foodall_rank.food_name %>

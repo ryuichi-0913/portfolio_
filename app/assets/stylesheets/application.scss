@@ -141,7 +141,19 @@ h2 {
 .card-img-top{
       display: inline-block;
       border-radius: 4%;
+      position: relative;/*相対配置*/
 }
+.card-img-top p {
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  top: 2%;
+  left: 2%;
+  font-weight: bold;
+  font-size: 2em;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+  background: pink;
+  border-radius: 50%;
+  }
 
 .card-title {
     margin-bottom: 0.75rem;
