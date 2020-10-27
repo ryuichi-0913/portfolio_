@@ -46,10 +46,11 @@
                             </ul>
                           </li>
                       <% elsif admin_signed_in? %>
+                          <li class="nav-item"><%= link_to "このサイトについて", root_path(anchor: 'thisabout'), class: "glyphicon glyphicon-link about", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "問い合わせ一覧", admins_contacts_path, class: "glyphicon glyphicon-envelope", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout", style: "color:white;"  %></li>
                       <% else %>
-                          <li class="nav-item"><%= link_to "このサイトについて", root_path, class: "glyphicon glyphicon-link about", style: "color:white;"  %></li>
+                          <li class="nav-item"><%= link_to "このサイトについて", root_path(anchor: 'thisabout'), class: "glyphicon glyphicon-link about", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "食品投稿一覧", users_foods_path, class: "glyphicon glyphicon-cutlery", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "雑貨品投稿一覧", users_nonfoods_path, class: "glyphicon glyphicon-book books", style: "color:white;"  %></li>
                           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up", style: "color:white;"  %></li>
