@@ -9,6 +9,30 @@
         </ul>
       <% end %>
     <h2 style="padding-left: 30px; ">食品アイデアTOP３(いいね編)</h2>
+
+  <% lastfood_Favorite = 0 %>
+  <% j = 1 %>
+ <% @foodall_ranks.with_index(1) do |foodall_ranking, i| %>
+   <% if i == 1 %>
+     <% lastfood_Favorite = foodall_ranking.food_favorites.count %>
+   <% end %>
+   <% if foodall_ranking.food_favorites.count != lastfood_Favorite %>
+     <% j = i %>
+     第<%= j %>位
+     <%= foodall_ranking.body %>
+     いいね数：<%= foodall_ranking.food_favorites.count %>
+     <% lastFavorite = foodall_ranking.food_favorites.count %>
+   <% else %>
+     <% lastfood_Favorite = foodall_ranking.food_favorites.count %>
+     第<%= j %>位
+     <%= foodall_ranking.body %>
+     いいね数：<%= foodall_ranking.food_favorites.count %>
+    <% end %>
+  <br>
+ <% end %>
+
+
+
       <!-- ランキングTOP３  -->
       <% @foodall_ranks.each do |foodall_rank| %>
         <div class="card" >
