@@ -22,9 +22,9 @@
                       <h4 class="card-title"><%= link_to users_nonfood_path(nonfoodall_rank) do %><%= nonfoodall_rank.nonfood_name %>
                               <% end %></h4>
                       <p class="card-text"><%= link_to nonfoodall_rank.user.name, users_user_path(nonfoodall_rank.user) %></p>
-                      <span class="badge badge-secondary" ><%= nonfoodall_rank.tag_list %></span>
-                    <div class = "iine__button">♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
-                    <div><%= nonfoodall_rank.created_at.strftime('%Y/%m/%d') %></div>
+                      <div style="padding-bottom: 5px"><span class="badge badge-secondary" ><%= nonfoodall_rank.tag_list %></span><%= nonfoodall_rank.nonfood_comments.count %>件コメント</div>
+                    <div class = "iine__button text-right">♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
+                    <div><p class="text-right"><%= nonfoodall_rank.created_at.strftime('%Y/%m/%d') %></p></div>
                   </div>
               </div>
           <% end %>

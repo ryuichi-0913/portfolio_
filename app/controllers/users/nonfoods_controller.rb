@@ -1,5 +1,4 @@
 class Users::NonfoodsController < ApplicationController
-
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
 
   def new
@@ -12,15 +11,14 @@ class Users::NonfoodsController < ApplicationController
   def create
     @nonfood = Nonfood.new(nonfood_params)
     @nonfood.user = current_user
-
     if @nonfood.save
-      redirect_to users_nonfood_path(@nonfood)
+       redirect_to users_nonfood_path(@nonfood)
     else
-      @user = current_user
-      @nonfood_new = Nonfood.new
-      @nonfood_new.tag_list.add("awesome", "slick")
-      @nonfood_new.tag_list.remove("awesome", "slick")
-      render 'new'
+       @user = current_user
+       @nonfood_new = Nonfood.new
+       @nonfood_new.tag_list.add("awesome", "slick")
+       @nonfood_new.tag_list.remove("awesome", "slick")
+       render 'new'
     end
   end
 
@@ -44,16 +42,16 @@ class Users::NonfoodsController < ApplicationController
     @nonfood.tag_list.add("awesome", "slick")
     @nonfood.tag_list.remove("awesome", "slick")
     if @nonfood.user != current_user
-      redirect_to users_nonfoods_path
+       redirect_to users_nonfoods_path
     end
   end
 
   def update
     @nonfood = Nonfood.find(params[:id])
    if @nonfood.update(nonfood_params)
-    redirect_to users_nonfood_path(@nonfood.id)
+      redirect_to users_nonfood_path(@nonfood.id)
    else
-    render "edit"
+      render "edit"
    end
   end
 
@@ -62,7 +60,6 @@ class Users::NonfoodsController < ApplicationController
     @nonfood.destroy
     redirect_to users_nonfoods_path
   end
-
 
     private
   def nonfood_params

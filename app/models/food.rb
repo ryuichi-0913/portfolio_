@@ -7,7 +7,6 @@ class Food < ApplicationRecord
 
   validates :food_name, presence: true
   validates :food_introduction, presence: true, length: { maximum: 300 }
-
   acts_as_taggable
 
   def food_favorited_by?(user)

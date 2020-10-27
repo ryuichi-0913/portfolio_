@@ -1,18 +1,16 @@
 class Users::FoodsController < ApplicationController
-
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
 
   def new
     @user = current_user
     @food_new = Food.new
-    @food_new.tag_list.add("awesome", "slick")
+    @food_new.tag_list.add("awesome", "slick") #引数を一致で情報入手
     @food_new.tag_list.remove("awesome", "slick")
   end
 
   def create
     @food = Food.new(food_params)
     @food.user = current_user
-
     if @food.save
       redirect_to users_food_path(@food)
     else
@@ -35,7 +33,6 @@ class Users::FoodsController < ApplicationController
     @user = @food.user
     @food_comment = FoodComment.new
     @food_comments = @food.food_comments
-
   end
 
   def edit
@@ -50,11 +47,11 @@ class Users::FoodsController < ApplicationController
 
   def update
     @food = Food.find(params[:id])
-   if @food.update(food_params)
-    redirect_to users_food_path(@food.id)
-   else
-    render "edit"
-   end
+    if @food.update(food_params)
+      redirect_to users_food_path(@food.id)
+    else
+      render "edit"
+    end
   end
 
   def destroy
@@ -62,7 +59,6 @@ class Users::FoodsController < ApplicationController
     @food.destroy
     redirect_to users_foods_path
   end
-
 
     private
   def food_params

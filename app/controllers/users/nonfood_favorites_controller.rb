@@ -1,5 +1,6 @@
 class Users::NonfoodFavoritesController < ApplicationController
   before_action :nonfood_params
+
   def create
     nonfood_favorite = @nonfood.nonfood_favorites.new(user_id: current_user.id)
     nonfood_favorite.save
@@ -11,7 +12,6 @@ class Users::NonfoodFavoritesController < ApplicationController
   end
 
     private
-
   def nonfood_params
     @nonfood = Nonfood.find(params[:nonfood_id])
   end

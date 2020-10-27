@@ -1,20 +1,20 @@
-<body>
-  <div class="container">
-    <div class="low">
-        <% if @contact.errors.any? %>
-              <%= @contact.errors.count %>件のエラー。
-              <% @contact.errors.full_messages.each do |message| %>
-                <%= message %>。
-              <% end %>
-        <% end %>
-        <h2 class="contact-title">お問い合わせフォーム</h2>
-            <%= form_for @contact, url: users_contacts_path do |f| %>
-                <%= f.label :タイトル %>
-                    <%= f.text_field :title, class:"form-control", :size=>"60" %>
-                <%= f.label :内容 %>
-                    <%= f.text_field :body, class:"form-control", :size=>"60" %>
-                <%= f.submit "送信",class: 'btn btn-info' %>
+<div class="container">
+  <div class="low">
+    <div class="col-md-5">
+      <% if @contact.errors.any? %>
+            <%= @contact.errors.count %>件のエラー。
+            <% @contact.errors.full_messages.each do |message| %>
+              <%= message %>。
             <% end %>
-      </div>
+      <% end %>
+      <h2 class="contact-title">お問い合わせフォーム</h2>
+          <%= form_for @contact, url: users_contacts_path do |f| %>
+              <%= f.label :タイトル %>
+                  <%= f.text_field :title, class:"form-control", :size=>"60" %>
+              <%= f.label :内容 %>
+                  <%= f.text_area :body, class:"form-control", :size=>"60x11"  %>
+              <%= f.submit "送信",class: 'btn btn-info' %>
+          <% end %>
     </div>
-  </body>
+  </div>
+</div>

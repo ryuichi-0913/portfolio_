@@ -1,62 +1,59 @@
-<body>
-  <div class="container">
-    <div class="low">
-    <h2><%= current_user.name %>さんの投稿一覧</h2>
-      <table class="table table-hover table-inverse">
-          <thead>
-              <tr>
-                  <th>アイデア画像</th>
-                  <th>アイデア名</th>
-                  <th>タグ</th>
-                  <th>投稿日時</th>
-                  <th>いいね</th>
-                  <th></th>
-              </tr>
-          </thead>
+<div class="container">
+  <div class="low">
+  <h2><%= current_user.name %>さんの投稿一覧</h2>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>アイデア画像</th>
+          <th>アイデア名</th>
+          <th>タグ</th>
+          <th>投稿日時</th>
+          <th>いいね</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+<!-- food、nonfoodの情報取得の条件分岐　instance利用 -->
+        <% @instances.each do |instance| %>
+          <tr>
+<!-- instance変数後に続くカラム情報をrespond_to?で判定
+　　　判定起点はfood_name等の同意義を持つカラムをrespond_to後に配置　条件分岐で正しい情報に基づき表示させる -->
+            <td><%=
+                if instance.respond_to? :food_image_id
+                  attachment_image_tag instance, :food_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
+                else
+                  attachment_image_tag instance, :nonfood_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
+                end%>
+            </td>
+            <td><%=
+                if instance.respond_to? :food_name
+                  instance[:food_name]
+                else
+                  instance[:nonfood_name]
+                end%>
+            </td>
+            <td><span class="badge badge-secondary" ><%=instance.tag_list %></span></td>
+            <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%=
+                if instance.respond_to? :food_name
+               instance.food_favorites.count
+                else
+               instance.nonfood_favorites.count
+                end %>
+            </td>
+            <td><%=
+               if instance.respond_to? :food_name
+                link_to "詳細を見る", users_food_path(instance)
 
-          <tbody>
-  <!-- food、nonfoodの情報取得の条件分岐　instance利用 -->
-              <% @instances.each do |instance| %>
-                  <tr>
-  <!-- instance変数後に続くカラム情報をrespond_to?で判定
-    　　　判定起点はfood_name等の同意義を持つカラムをrespond_to後に配置　条件分岐で正しい情報に基づき表示させる -->
-                    <td><%=
-                        if instance.respond_to? :food_image_id
-                          attachment_image_tag instance, :food_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
-                        else
-                          attachment_image_tag instance, :nonfood_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
-                        end%>
-                    </td>
-                    <td><%=
-                        if instance.respond_to? :food_name
-                          instance[:food_name]
-                        else
-                          instance[:nonfood_name]
-                        end%>
-                    </td>
-                    <td><span class="badge badge-secondary" ><%=instance.tag_list %></span></td>
-                    <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
-                    <td><%=
-                        if instance.respond_to? :food_name
-                       instance.food_favorites.count
-                        else
-                       instance.nonfood_favorites.count
-                        end %>
-                    </td>
-                    <td><%=
-                       if instance.respond_to? :food_name
-                        link_to "詳細を見る", users_food_path(instance)
-
-                       else
-                        link_to "詳細を見る", users_nonfood_path(instance)
-                       end %>
-                    </td>
-                  </tr>
-          　  <% end %>
-  <!-- 条件分岐ここまで -->
-          </tbody>
-      </table>
-      <span style="display: block; text-align: center;"><%= paginate @instances %></span>
-    </div>
+               else
+                link_to "詳細を見る", users_nonfood_path(instance)
+               end %>
+            </td>
+          </tr>
+    　  <% end %>
+<!-- 条件分岐ここまで -->
+      </tbody>
+    </table>
+    <span style="display: block; text-align: center;"><%= paginate @instances %></span>
   </div>
-</body>
+</div>

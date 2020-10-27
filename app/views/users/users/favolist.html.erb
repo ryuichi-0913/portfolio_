@@ -1,53 +1,51 @@
-<body>
-  <div class="container">
-    <div class="low">
+<div class="container">
+  <div class="low">
     <h2><%= current_user.name %>さんのお気に入り投稿リスト</h2>
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>アイデア画像</th>
-              <th>アイデア名</th>
-              <th>投稿者</th>
-              <th>タグ</th>
-              <th>投稿日時</th>
-            </tr>
-          </thead>
-            <tbody>
-                <% @instances.each do |instance| %>
-                  <tr>
-                    <td><%=
-                      if instance.respond_to? :food_image_id
-                        attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
-                      elsif instance.respond_to? :nonfood_image_id
-                        attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
-                      end%>
-                    </td>
-                    <td><%=
-                      if instance.respond_to? :food_name
-                        instance[:food_name]
-                      else
-                        instance[:nonfood_name]
-                      end%>
-                    </td>
-                    <td><%=
-                      if instance.respond_to? :food_name
-                        instance.user.name
-                      else
-                      end %></td>
-                    <td><span class="badge badge-secondary" ><%=instance.tag_list %></span></td>
-                    <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
-                    <td><%=
-                       if instance.respond_to? :food_name
-                        link_to "投稿情報を見る", users_food_path(instance)
-                       else
-                        link_to "投稿情報を見る", users_nonfood_path(instance)
-                       end %>
-                    </td>
-                  </tr>
-            　  <% end %>
-            </tbody>
-        </table>
-        <span style="display: block; text-align: center;"><%= paginate @instances %></span>
-    </div>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>アイデア画像</th>
+          <th>アイデア名</th>
+          <th>投稿者</th>
+          <th>タグ</th>
+          <th>投稿日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @instances.each do |instance| %>
+          <tr>
+            <td><%=
+              if instance.respond_to? :food_image_id
+                attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+              elsif instance.respond_to? :nonfood_image_id
+                attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+              end%>
+            </td>
+            <td><%=
+              if instance.respond_to? :food_name
+                instance[:food_name]
+              else
+                instance[:nonfood_name]
+              end%>
+            </td>
+            <td><%=
+              if instance.respond_to? :food_name
+                instance.user.name
+              else
+              end %></td>
+            <td><span class="badge badge-secondary" ><%=instance.tag_list %></span></td>
+            <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%=
+               if instance.respond_to? :food_name
+                link_to "投稿情報を見る", users_food_path(instance)
+               else
+                link_to "投稿情報を見る", users_nonfood_path(instance)
+               end %>
+            </td>
+          </tr>
+    　  <% end %>
+      </tbody>
+    </table>
+    <span style="display: block; text-align: center;"><%= paginate @instances %></span>
   </div>
-</body>
+</div>

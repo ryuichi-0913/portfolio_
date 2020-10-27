@@ -1,5 +1,6 @@
 class Users::FoodFavoritesController < ApplicationController
   before_action :food_params
+
   def create
     food_favorite = @food.food_favorites.new(user_id: current_user.id)
     food_favorite.save
@@ -11,7 +12,6 @@ class Users::FoodFavoritesController < ApplicationController
   end
 
     private
-
   def food_params
     @food = Food.find(params[:food_id])
   end

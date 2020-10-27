@@ -1,47 +1,45 @@
-<body>
-    <div class="container">
-    　<h2><b><%= @user.name %></b> さんの編集画面</h2>
-        <div class="row">
-            <div class="col-md-5">
-            <!-- 入力フォーム -->
-                <%= form_for(@user, url: users_user_path ) do |f| %>
-                <%= render 'layouts/error_messages', resource: @user %>
-                    <div>
-                	   <%= f.label :user_image, "ユーザー画像" %>
-                	   <%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;}" %><br>
-                	   <b>ユーザー画像選択</b><%= f.attachment_field :user_image %>
-                	</div>
-            </div>
-
-            <div class="col-md-7">
-                	<div>
-                    　　<%= f.label :name, "ニックネーム" %><br>
-                    　　<%= f.text_field :name, :size=>"60" %>
-                	</div>
-                    <div>
-                        　　<%= f.label :性別 %><br>
-                        　　<%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
-                    </div>
-                    <div>
-                        　　<%= f.label :年代 %><br>
-                        　　<%= f.select :age_group, User.age_groups.keys.map {|k| [I18n.t("enums.user.age_group.#{k}"), k]} %>
-                    </div>
-                    <div>
-                        　　<%= f.label :職業 %><br>
-                        　　<%= f.select :profession, User.professions.keys.map {|k| [I18n.t("enums.user.profession.#{k}"), k]} %>
-                    </div>
-                    <div>
-                      　　<%= f.label :user_introduction, "自己紹介" %><br>
-                      　　<%= f.text_area :user_introduction, :size=>"60x11" %>
-                    </div>
-                    <div>   <%= f.submit('保存する',class: 'btn btn-info my-1 mb-5 px-5') %>
-                    </div>
-                <% end %>
-            </div>
+<div class="container">
+　<h2><b><%= @user.name %></b> さんの編集画面</h2>
+    <div class="row">
+        <div class="col-md-5">
+        <!-- 入力フォーム -->
+            <%= form_for(@user, url: users_user_path ) do |f| %>
+            <%= render 'layouts/error_messages', resource: @user %>
+            <div>
+        	   <%= f.label :user_image, "ユーザー画像" %>
+        	   <%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;}" %><br>
+        	   <b>ユーザー画像選択</b>
+               <%= f.attachment_field :user_image %>
+        	</div>
         </div>
+            <div class="col-md-7">
+            	<div>
+                　　<%= f.label :name, "ニックネーム" %><br>
+                　　<%= f.text_field :name, :size=>"60" %>
+            	</div>
+                <div>
+                    <%= f.label :性別 %><br>
+                    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
+                </div>
+                <div>
+                    <%= f.label :年代 %><br>
+                    <%= f.select :age_group, User.age_groups.keys.map {|k| [I18n.t("enums.user.age_group.#{k}"), k]} %>
+                </div>
+                <div>
+                    <%= f.label :職業 %><br>
+                    <%= f.select :profession, User.professions.keys.map {|k| [I18n.t("enums.user.profession.#{k}"), k]} %>
+                </div>
+                <div>
+                  　<%= f.label :user_introduction, "自己紹介" %><br>
+                  　<%= f.text_area :user_introduction, :size=>"60x11" %>
+                </div>
+                <div>
+                    <%= f.submit('保存する',class: 'btn btn-info my-1 mb-5 px-5') %>
+                </div>
+            <% end %>
+            </div>
     </div>
-</body>
-
+</div>
 
 <script>
 $(document).on("turbolinks:load", function(){
