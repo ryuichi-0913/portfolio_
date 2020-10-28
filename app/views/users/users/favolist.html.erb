@@ -16,9 +16,9 @@
           <tr>
             <td><%=
               if instance.respond_to? :food_image_id
-                attachment_image_tag instance, :food_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                attachment_image_tag instance, :food_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
               elsif instance.respond_to? :nonfood_image_id
-                attachment_image_tag instance, :nonfood_image, size: '60x60',　format: 'jpeg', fallback: "no_image.jpg"
+                attachment_image_tag instance, :nonfood_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
               end%>
             </td>
             <td><%=
