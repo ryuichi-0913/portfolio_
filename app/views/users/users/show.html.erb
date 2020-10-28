@@ -21,16 +21,16 @@
 <!-- ここまで -->
 	        </div>
 			<div class="col-md-6">
-				<p class="showp1">/ 性別 /</p>
-				<p class="showp2"><%= @user.gender_i18n %></p>
-	　　　　　　　<p class="showp1">/ 年代 /</p>
-				<p class="showp2"><%= @user.age_group_i18n %></p>
-	　　　　　　　<p class="showp1">/ 職業 /</p>
-				<p class="showp2"><%= @user.profession_i18n %></p>
-	　　　　　　　<p class="showp1">/ 登録日 /</p>
-	            <p class="showp2"><%= @user.created_at.strftime('%Y/%m/%d') %></p>
-	　　　　　　　<p class="showp1">/ 自己紹介 /</p>
-	            <p class="showp2"><%= @user.user_introduction %></p>
+				<p class="show1">/ 性別 /</p>
+				<p class="show2"><%= @user.gender_i18n %></p>
+	　　　　　　　<p class="show1">/ 年代 /</p>
+				<p class="show2"><%= @user.age_group_i18n %></p>
+	　　　　　　　<p class="show1">/ 職業 /</p>
+				<p class="show2"><%= @user.profession_i18n %></p>
+	　　　　　　　<p class="show1">/ 登録日 /</p>
+	            <p class="show2"><%= @user.created_at.strftime('%Y/%m/%d') %></p>
+	　　　　　　　<p class="show1">/ 自己紹介 /</p>
+	            <div class="show2"><%= simple_format(@user.user_introduction) %></div>
 			</div>
 			<div class="col-md-3">
 				<% if current_user && current_user.id == @user.id %>

@@ -18,7 +18,7 @@
             <h2><%= link_to 'TunaguKoe', root_path, class: "header-logo", style: "color:white; padding-left:100px; font-size: 50px; text-decoration: none;" %></h2>
           </div>
           <div class="collapse navbar-collapse flex-column navbar-right" id="navbarSupportedContent" >
-            <div class="site-description" style="margin-left: 49%; ">
+            <div class="site-description" style="margin-left: 45%; ">
               <%= form_tag(search_path, method: :get) do %>
                 <%= text_field_tag 'search[content]' %>
                 <%= select_tag 'search[model]', options_for_select({ "顧客" => "user", "食品投稿" => "food", "雑貨品投稿" => "nonfood" }) %>

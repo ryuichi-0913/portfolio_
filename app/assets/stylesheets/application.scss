@@ -95,14 +95,21 @@ h2 {
   background: linear-gradient(to right, rgb(255, 186, 115), transparent);
   color: #545454;
 }
-.showp1{
+
+/*showページpタグ*/
+.show1{
     padding-left: 60px;
     font-weight: bold;
     font-size: 20px;
 }
-.showp2{
+.show2{
     text-align: center;
     font-size: 15px;
+    display: block;
+}
+.show3{
+    text-align: left;
+    display: inline-block;
 }
 
 /*ページネーション自体のデザイン*/

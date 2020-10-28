@@ -15,7 +15,7 @@
           <% @user.following_user.each do |user| %>
             <tr>
               <td>
-              <%= attachment_image_tag user, :user_image, size: '100x100', format: 'jpeg', fallback: "no_image.jpg" %>
+              <%= attachment_image_tag user, :user_image, size: '100x100', format: 'jpeg', fallback: "no_image.jpg", style: "border-radius:50%;" %>
               </td>
               <td><%= user.name%></td>
               <td><%= user.gender_i18n %></td>
