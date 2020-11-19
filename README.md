@@ -34,6 +34,7 @@ https://docs.google.com/spreadsheets/d/1H5SCGn4vzHcWuVDBvlbKXeIVtjbmL_CE_KNpmeqD
 - AWS（EC2、RDS）
 AWS構成図
 https://drive.google.com/file/d/1_R3oU_M4e704bBh7dd0p-tBkdFIR_FIo/view?usp=sharing
+
 インフラ設計書
 https://docs.google.com/spreadsheets/d/1OiXu1js3Wp8SRt0kMRtg3GGkghIL9WIDEqOEnFPmodM/edit#gid=0
 
