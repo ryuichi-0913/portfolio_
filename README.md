@@ -17,7 +17,7 @@
 商品仕入れ・開発時に各々ユーザーの意見を参考にするサイト
 
 ## 設計書
-MVC初期構想時資料
+- MVC初期構想時資料
 https://docs.google.com/spreadsheets/d/15hwcp08VSZ4uYXTB1-f42uc2ahHGpTg4v01ZQlmdlMU/edit?usp=sharing
 
 - AWS構成図
