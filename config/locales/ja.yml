@@ -43,3 +43,7 @@ ja:
       nonfood:
         nonfood_name: 雑貨品アイデア名
         nonfood_introduction: 雑貨品説明
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"

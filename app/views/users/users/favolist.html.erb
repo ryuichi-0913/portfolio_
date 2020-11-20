@@ -34,7 +34,7 @@
               else
               end %></td>
             <td><span class="badge badge-secondary" ><%=instance.tag_list %></span></td>
-            <td><%= instance.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= l instance.created_at, format: :short %></td>
             <td><%=
                if instance.respond_to? :food_name
                 link_to "投稿情報を見る", users_food_path(instance)

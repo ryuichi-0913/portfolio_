@@ -14,7 +14,7 @@
 　　　　 <p class="show1">/ アイデア説明 /</p>
         <div class="show2"><%= simple_format(@nonfood.nonfood_introduction) %></div>
         <p class="show1">/ 登録日 /</p>
-        <p class="show2"><%= @nonfood.created_at.strftime('%Y/%m/%d') %></p>
+        <p class="show2"><%= l @nonfood.created_at, format: :short %></p>
         <div>
         <!-- 編集ボタン表示 -->
           <% if @user == current_user %>

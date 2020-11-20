@@ -10,7 +10,7 @@
             <%= attachment_image_tag nonfood_comment.user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg", style: "border-radius:50%;" %><br>
             <%= nonfood_comment.user.name %>
           <% end %></td>
-      <td><%= nonfood_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
+      <td><%= l nonfood_comment.created_at, format: :short %><br>
         <p><%= nonfood_comment.nonfood_comment %></p></td>
       <td><% if nonfood_comment.user == current_user %>
         　 <%= link_to "削除", users_nonfood_nonfood_comment_path(nonfood_comment.nonfood, nonfood_comment), method: :delete, remote: true, class: "btn btn-danger pull-right" %>

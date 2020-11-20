@@ -31,7 +31,7 @@
             <div class = "iine__button text-right">
               ♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
             <div><p class="text-right">
-              <%= nonfoodall_rank.created_at.strftime('%Y/%m/%d') %></p>
+              <%= l nonfoodall_rank.created_at, format: :short %></p>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
                 <%= nonfood.tag_list %></span></td>
               <td class="nonfoodtd1">
                 <%= link_to nonfood.user.name, users_user_path(nonfood.user) %></td>
-              <td><%= nonfood.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= l nonfood.created_at, format: :short %></td>
               <td class="nonfoodtd1">
                 <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
               </td>
