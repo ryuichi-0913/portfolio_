@@ -1,31 +1,40 @@
-<% if @model == "user" %>
-  <h2>顧客</h2>
-   <% @datas.each do |datas| %>
-   <table class="table">
-   <tr>
-   <td><%=link_to datas.name, users_user_path(datas) %></td>
-   </tr>
-   </table>
-   <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <% if @model == "user" %>
+          <h2>顧客</h2>
+          <h3>”<%= @content %>”の検索結果</h3>
+            <% @datas.each do |datas| %>
+             <table class="table">
+               <tr>
+               <td><%=link_to datas.name, users_user_path(datas) %></td>
+               </tr>
+             </table>
+             <% end %>
 
-<% elsif @model == "food"%>
-    <h2>食品記事</h2>
-	<% @datas.each do |datas| %>
-	 <table class="table">
-     <tr>
-     <td><%=link_to datas.food_name, users_food_path(datas)%></td>
-     </tr>
-     </table>
-     <% end %>
+        <% elsif @model == "food"%>
+          <h2>食品記事</h2>
+          <h3>”<%= @content %>”の検索結果</h3>
+        	   <% @datas.each do |datas| %>
+          	  <table class="table">
+                 <tr>
+                 <td><%=link_to datas.food_name, users_food_path(datas)%></td>
+                 </tr>
+              </table>
+              <% end %>
 
-<% elsif @model == "nonfood"%>
-    <h2>雑貨品記事</h2>
-	<% @datas.each do |datas| %>
-	 <table class="table">
-     <tr>
-     <td><%=link_to datas.nonfood_name, users_nonfood_path(datas)%></td>
-     </tr>
-     </table>
-     <% end %>
-<% else %>
-<% end %>
+        <% elsif @model == "nonfood"%>
+          <h2>雑貨品記事</h2>
+          <h3>”<%= @content %>”の検索結果</h3>
+        	   <% @datas.each do |datas| %>
+          	   <table class="table">
+                 <tr>
+                 <td><%=link_to datas.nonfood_name, users_nonfood_path(datas)%></td>
+                 </tr>
+               </table>
+               <% end %>
+        <% else %>
+        <% end %>
+    </div>
+  </div>
+</div>

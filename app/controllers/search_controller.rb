@@ -5,7 +5,8 @@ class SearchController < ApplicationController
     @datas = search_for(@model, @content)
   end
 
-  def partical(model, content)
+#部分検索
+  def search_part(model, content)
     if model == 'user'
       User.where("name LIKE ?", "%#{content}%")
     elsif model == 'food'
@@ -16,6 +17,6 @@ class SearchController < ApplicationController
   end
 
   def search_for(model, content)
-      partical(model, content)
+      search_part(model, content)
   end
 end

@@ -4,8 +4,6 @@ class Users::FoodsController < ApplicationController
   def new
     @user = current_user
     @food_new = Food.new
-    @food_new.tag_list.add("awesome", "slick") #引数を一致で情報入手
-    @food_new.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -16,8 +14,6 @@ class Users::FoodsController < ApplicationController
     else
       @user = current_user
       @food_new = Food.new
-      @food_new.tag_list.add("awesome", "slick")
-      @food_new.tag_list.remove("awesome", "slick")
       render 'new'
     end
   end
@@ -38,8 +34,6 @@ class Users::FoodsController < ApplicationController
   def edit
     @user = current_user
     @food = Food.find(params[:id])
-    @food.tag_list.add("awesome", "slick")
-    @food.tag_list.remove("awesome", "slick")
     if @food.user != current_user
       redirect_to users_foods_path
     end

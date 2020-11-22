@@ -28,8 +28,19 @@
                 <%= foodall_rank.tag_list %></span>
                 <%= foodall_rank.food_comments.count %>件コメント
             </div>
-            <div class = "iine__button text-right">
-              ♡️<%= foodall_rank.food_favorites.count %></div>
+            <!-- いいね表示ここから -->
+            <div>
+              <% if user_signed_in? %>
+                  <span class="food_<%= foodall_rank.id %>" style="display: block; text-align: left;">
+                    <%= render 'food', food: foodall_rank %>
+                  </span>
+              <% else %>
+                  <span class = "iine__button text-right">
+                    ♡️<%= foodall_rank.food_favorites.count %>
+                  </span>
+              <% end %>
+            </div>
+            <!-- いいね表示ここからまで -->
             <div><p class="text-right">
               <%= l foodall_rank.created_at, format: :short %></p>
             </div>
@@ -66,7 +77,17 @@
                 <%= link_to food.user.name, users_user_path(food.user) %></td>
               <td><%= l food.created_at, format: :short %></td>
               <td class="foodtd1">
-                <div class = "iine__button">♡️<%= food.food_favorites.count %></div>
+                <div>
+                  <% if user_signed_in? %>
+                      <span class="food_<%= food.id %>" style="display: block; text-align: left;">
+                        <%= render 'food', food: food %>
+                      </span>
+                  <% else %>
+                      <span class = "iine__button text-right">
+                        ♡️<%= food.food_favorites.count %>
+                      </span>
+                  <% end %>
+                </div>
               </td>
            </tr>
         　<% end %>

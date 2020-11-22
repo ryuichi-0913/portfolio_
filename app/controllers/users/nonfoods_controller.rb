@@ -4,8 +4,6 @@ class Users::NonfoodsController < ApplicationController
   def new
     @user = current_user
     @nonfood_new = Nonfood.new
-    @nonfood_new.tag_list.add("awesome", "slick")
-    @nonfood_new.tag_list.remove("awesome", "slick")
   end
 
   def create
@@ -16,8 +14,6 @@ class Users::NonfoodsController < ApplicationController
     else
        @user = current_user
        @nonfood_new = Nonfood.new
-       @nonfood_new.tag_list.add("awesome", "slick")
-       @nonfood_new.tag_list.remove("awesome", "slick")
        render 'new'
     end
   end
@@ -39,8 +35,6 @@ class Users::NonfoodsController < ApplicationController
   def edit
     @user = current_user
     @nonfood = Nonfood.find(params[:id])
-    @nonfood.tag_list.add("awesome", "slick")
-    @nonfood.tag_list.remove("awesome", "slick")
     if @nonfood.user != current_user
        redirect_to users_nonfoods_path
     end
