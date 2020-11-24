@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="low">
+  <div class="row">
     <h1 style="text-align: center;">雑貨品アイデア投稿</h1>
       <% if flash[:error].present? %>
         <ul class="errors">
@@ -28,8 +28,13 @@
                 <%= nonfoodall_rank.tag_list %></span>
                 <%= nonfoodall_rank.nonfood_comments.count %>件コメント
             </div>
-            <div class = "iine__button text-right">
-              ♡️<%= nonfoodall_rank.nonfood_favorites.count %></div>
+            <!-- いいね表示ここから -->
+            <div>
+              <span class="nonfood_<%= nonfoodall_rank.id %>" style="display: block; text-align: left;">
+                <%= render 'nonfood', nonfood: nonfoodall_rank %>
+              </span>
+            </div>
+            <!-- いいね表示ここからまで -->
             <div><p class="text-right">
               <%= l nonfoodall_rank.created_at, format: :short %></p>
             </div>
@@ -66,7 +71,11 @@
                 <%= link_to nonfood.user.name, users_user_path(nonfood.user) %></td>
               <td><%= l nonfood.created_at, format: :short %></td>
               <td class="nonfoodtd1">
-                <div class = "iine__button">♡️<%= nonfood.nonfood_favorites.count %></div>
+                <div>
+                      <span class="nonfood_<%= nonfood.id %>" style="display: block; text-align: left;">
+                        <%= render 'nonfood', nonfood: nonfood %>
+                      </span>
+                </div>
               </td>
            </tr>
         　<% end %>

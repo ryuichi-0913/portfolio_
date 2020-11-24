@@ -71,6 +71,9 @@ footer {
 body{
     background: -webkit-radial-gradient(circle, #fefafa 0%, #dee3e8 100%);
 }
+.container{
+    padding-top: 45px;
+}
 h1 {
     position: relative;
     color: #333;
@@ -149,8 +152,9 @@ h2 {
     flex: 1 1 auto;
     padding: 1.25rem;
 }
-.card-img-top{
 /*hometop部*/
+.card-img-top{
+
 }
 .card-img-top p {
   position: absolute;/*絶対配置*/
@@ -191,7 +195,8 @@ h2 {
 }
 .foodtd1{
   display: table-cell;
-  vertical-align: middle;}
+  vertical-align: middle;
+}
 
 
 

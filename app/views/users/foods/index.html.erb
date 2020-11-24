@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="low">
+  <div class="row">
     <h1 style="text-align: center;">食品アイデア投稿</h1>
       <% if flash[:error].present? %>
         <ul class="errors">
@@ -30,15 +30,9 @@
             </div>
             <!-- いいね表示ここから -->
             <div>
-              <% if user_signed_in? %>
-                  <span class="food_<%= foodall_rank.id %>" style="display: block; text-align: left;">
-                    <%= render 'food', food: foodall_rank %>
-                  </span>
-              <% else %>
-                  <span class = "iine__button text-right">
-                    ♡️<%= foodall_rank.food_favorites.count %>
-                  </span>
-              <% end %>
+              <span class="food_<%= foodall_rank.id %>" style="display: block; text-align: left;">
+                <%= render 'food', food: foodall_rank %>
+              </span>
             </div>
             <!-- いいね表示ここからまで -->
             <div><p class="text-right">
@@ -78,15 +72,9 @@
               <td><%= l food.created_at, format: :short %></td>
               <td class="foodtd1">
                 <div>
-                  <% if user_signed_in? %>
                       <span class="food_<%= food.id %>" style="display: block; text-align: left;">
                         <%= render 'food', food: food %>
                       </span>
-                  <% else %>
-                      <span class = "iine__button text-right">
-                        ♡️<%= food.food_favorites.count %>
-                      </span>
-                  <% end %>
                 </div>
               </td>
            </tr>
