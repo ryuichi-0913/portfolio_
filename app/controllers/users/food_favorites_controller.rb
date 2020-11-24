@@ -11,9 +11,9 @@ class Users::FoodFavoritesController < ApplicationController
     food_favorite.destroy
   end
 
-    private
+  private
+
   def food_params
     @food = Food.find(params[:food_id])
   end
-
 end

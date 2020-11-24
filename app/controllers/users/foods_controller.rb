@@ -1,5 +1,5 @@
 class Users::FoodsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+  before_action :authenticate_user!, only: %i[edit update destroy new create]
 
   def new
     @user = current_user
@@ -34,9 +34,7 @@ class Users::FoodsController < ApplicationController
   def edit
     @user = current_user
     @food = Food.find(params[:id])
-    if @food.user != current_user
-      redirect_to users_foods_path
-    end
+    redirect_to users_foods_path if @food.user != current_user
   end
 
   def update
@@ -44,7 +42,7 @@ class Users::FoodsController < ApplicationController
     if @food.update(food_params)
       redirect_to users_food_path(@food.id)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -54,7 +52,8 @@ class Users::FoodsController < ApplicationController
     redirect_to users_foods_path
   end
 
-    private
+  private
+
   def food_params
     params.require(:food).permit(:food_image, :food_name, :food_introduction, :tag_list)
   end

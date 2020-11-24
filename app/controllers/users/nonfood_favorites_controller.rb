@@ -11,7 +11,8 @@ class Users::NonfoodFavoritesController < ApplicationController
     nonfood_favorite.destroy
   end
 
-    private
+  private
+
   def nonfood_params
     @nonfood = Nonfood.find(params[:nonfood_id])
   end
