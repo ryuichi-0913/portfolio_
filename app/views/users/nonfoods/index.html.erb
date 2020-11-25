@@ -12,8 +12,8 @@
       <!-- ランキングTOP３  -->
       <% @nonfoodall_ranks.each.with_index(1) do |nonfoodall_rank,i| %>
         <div class="card" >
-          <div class="card-img-top"><%= link_to users_nonfood_path(nonfoodall_rank) do %>
-            <%= attachment_image_tag nonfoodall_rank, :nonfood_image, size: '330x330',　format: 'jpeg', fallback: "no_image.jpg" %>
+          <div class="card-img-top ranking__cards"><%= link_to users_nonfood_path(nonfoodall_rank) do %>
+            <%= attachment_image_tag nonfoodall_rank, :nonfood_image, format: 'jpeg', fallback: "no_image.jpg" %>
           <% end %>
           <p><%="#{i}位"%></p>
           </div>
@@ -59,8 +59,8 @@
         <tbody>
           <% @nonfoods.each do |nonfood|%>
             <tr>
-              <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
-                <%= attachment_image_tag nonfood, :nonfood_image, size: '150x150',　format: 'jpeg', fallback: "no_image.jpg" %>
+              <td class="nonfoodtd1 nonfood__picture"><%= link_to users_nonfood_path(nonfood) do %>
+                <%= attachment_image_tag nonfood, :nonfood_image, format: 'jpeg', fallback: "no_image.jpg" %>
               <% end %></td>
               <td class="nonfoodtd1"><%= link_to users_nonfood_path(nonfood) do %>
                 <%= nonfood.nonfood_name %>

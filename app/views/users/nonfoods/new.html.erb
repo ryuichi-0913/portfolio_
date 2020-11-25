@@ -7,9 +7,11 @@
           <% if @nonfood.present? %>
           <%= render 'layouts/error_messages', resource: @nonfood %>
           <% end %>
-          <div>
+          <div class="nonfoodpost__image">
             <%= f.label :nonfood_image, "雑貨品イメージ画像" %>
-            <%= attachment_image_tag @nonfood_new, :nonfood_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %><br>
+            <%= attachment_image_tag @nonfood_new, :nonfood_image, format: "jpeg",
+             id: "img_prev", fallback: "no_image.jpg" %>
+          <br>
             画像選択<%= f.attachment_field :nonfood_image %>
           </div>
           <br>

@@ -2,8 +2,8 @@
   <h2>投稿詳細</h2>
     <div class="row">
       <div class="col-md-8">
-        <span style="display: block; text-align: center;">
-          <%= attachment_image_tag @nonfood, :nonfood_image, size: '250x250',　format: 'jpeg' %>
+        <span class="nonfoodpost__image" style="display: block; text-align: center;">
+          <%= attachment_image_tag @nonfood, :nonfood_image,　format: 'jpeg' %>
         </span>
 　　　　 <p class="show1">/ アイデア名 /</p>
         <p class="show2"><%= @nonfood.nonfood_name %></p>

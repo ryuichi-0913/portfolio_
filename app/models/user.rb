@@ -21,7 +21,8 @@ class User < ApplicationRecord
 
   enum profession: { profession_private: 0, unemployed: 1, worker: 2, housework: 3 }
   enum gender: { gender_private: 0, man: 1, human: 2 }
-  enum age_group: { age_private: 0, Twenties: 1, thirties: 2, forties: 3, fifties: 4, sixties: 5, seventies: 6, eighties: 7, nineties: 8 } # rubocop:disable Layout/LineLength
+  enum age_group: { age_private: 0, Twenties: 1, thirties: 2, forties: 3,
+                    fifties: 4, sixties: 5, seventies: 6, eighties: 7, nineties: 8 }
   # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)

@@ -7,9 +7,10 @@
           <% if @food.present? %>
           <%= render 'layouts/error_messages', resource: @food %>
           <% end %>
-    			<div>
+    			<div class="foodpost__image">
             <%= f.label :food_image, "食品イメージ画像" %>
-    				<%= attachment_image_tag @food_new, :food_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %><br>
+    				<%= attachment_image_tag @food_new, :food_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg" %>
+            <br>
     				画像選択<%= f.attachment_field :food_image %>
     			</div>
           <br>

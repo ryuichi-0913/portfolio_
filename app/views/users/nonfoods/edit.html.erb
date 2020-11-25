@@ -4,8 +4,9 @@
     <div class="row">
 		<div class="col-md-5">
 			<%= form_for(@nonfood, url: users_nonfood_path ) do |f| %>
-				<div><%= f.label :nonfood_image, "雑貨品イメージ画像" %>
-					<%= attachment_image_tag @nonfood, :nonfood_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px;"  %><br>
+				<div class="nonfoodpost__image"><%= f.label :nonfood_image, "雑貨品イメージ画像" %>
+					<%= attachment_image_tag @nonfood, :nonfood_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg" %>
+				<br>
 					画像選択<%= f.attachment_field :nonfood_image %></div>
 			   <div><%= f.label :nonfood_name, "アイデア名（雑貨品）" %><br>
 	                <%= f.text_field :nonfood_name, :size=>"60" %>

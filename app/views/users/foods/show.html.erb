@@ -2,8 +2,8 @@
     <h2>食品投稿詳細</h2>
       <div class="row">
         <div class="col-md-8">
-          <span style="display: block; text-align: center;">
-            <%= attachment_image_tag @food, :food_image, size: '250x250',　format: 'jpeg' %>
+          <span class="foodpost__image" style="display: block; text-align: center;">
+            <%= attachment_image_tag @food, :food_image, format: 'jpeg' %>
           </span>
   　　　　 <p class="show1">/ 食品アイデア名 /</p>
           <p class="show2"><%= @food.food_name %></p>

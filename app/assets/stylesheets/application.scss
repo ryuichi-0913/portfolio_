@@ -152,10 +152,97 @@ h2 {
     flex: 1 1 auto;
     padding: 1.25rem;
 }
-/*hometop部*/
-.card-img-top{
 
+.ranking__cards {
+  .food_image {
+    width: 330px;
+    height: 250px;
+    object-fit: cover;
+  }
 }
+
+.ranking__cards {
+  .nonfood_image {
+    width: 330px;
+    height: 250px;
+    object-fit: cover;
+  }
+}
+
+.food__picture {
+  .food_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.nonfood__picture {
+  .nonfood_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.allpost_picture {
+  .nonfood_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.allpost_picture {
+  .food_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.favolist_picture {
+  .food_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.favolist_picture {
+  .nonfood_image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.user__picture {
+  .user_image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+/*食品新規・編集・詳細に適応*/
+.foodpost__image {
+  .food_image {
+    width: 250px;
+    height: 220px;
+    object-fit: cover;
+  }
+}
+
+/*雑貨品新規・編集・詳細に適応*/
+.nonfoodpost__image {
+  .nonfood_image {
+    width: 250px;
+    height: 220px;
+    object-fit: cover;
+  }
+}
+
 .card-img-top p {
   position: absolute;/*絶対配置*/
   color: white;/*文字は白に*/

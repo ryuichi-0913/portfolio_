@@ -18,11 +18,11 @@
           <tr>
 <!-- instance変数後に続くカラム情報をrespond_to?で判定
 　　　判定起点はfood_name等の同意義を持つカラムをrespond_to後に配置　条件分岐で正しい情報に基づき表示させる -->
-            <td><%=
+            <td class="favolist_picture"><%=
                 if instance.respond_to? :food_image_id
-                  attachment_image_tag instance, :food_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
+                  attachment_image_tag instance, :food_image, format: 'jpeg', fallback: "no_image.jpg"
                 else
-                  attachment_image_tag instance, :nonfood_image, size: '100x100',　format: 'jpeg', fallback: "no_image.jpg"
+                  attachment_image_tag instance, :nonfood_image, format: 'jpeg', fallback: "no_image.jpg"
                 end%>
             </td>
             <td><%=
