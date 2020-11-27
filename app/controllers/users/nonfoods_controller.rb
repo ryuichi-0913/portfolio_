@@ -21,7 +21,10 @@ class Users::NonfoodsController < ApplicationController
   def index
     @nonfoods = Nonfood.page(params[:page]).reverse_order
     @user = current_user
-    @nonfoodall_ranks = Nonfood.find(NonfoodFavorite.group(:nonfood_id).order('count(nonfood_id) desc').limit(3).pluck(:nonfood_id))  # rubocop:disable Layout/LineLength
+    @nonfoodall_ranks = Nonfood.find(NonfoodFavorite
+      .group(:nonfood_id)
+      .order('count(nonfood_id) desc')
+      .limit(3).pluck(:nonfood_id))
   end
 
   def show
@@ -55,6 +58,10 @@ class Users::NonfoodsController < ApplicationController
   private
 
   def nonfood_params
-    params.require(:nonfood).permit(:nonfood_image, :nonfood_name, :nonfood_introduction, :tag_list)
+    params.require(:nonfood).permit(
+      :nonfood_image,
+      :nonfood_name,
+      :nonfood_introduction,
+      :tag_list)
   end
 end

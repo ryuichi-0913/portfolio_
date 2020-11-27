@@ -1,47 +1,47 @@
-  <div class="container">
-    <h2>食品投稿詳細</h2>
-      <div class="row">
-        <div class="col-md-8">
-          <span class="foodpost__image" style="display: block; text-align: center;">
-            <%= attachment_image_tag @food, :food_image, format: 'jpeg' %>
-          </span>
-  　　　　 <p class="show1">/ 食品アイデア名 /</p>
-          <p class="show2"><%= @food.food_name %></p>
-          <p class="show1">/ タグ /</p>
-          <p class="show2"><%= @food.tag_list %></p>
-          <p class="show1">/ 投稿者 /</p>
-          <p class="show2"><%= @food.user.name %></p>
-  　　　　 <p class="show1">/ アイデア説明 /</p>
-          <div class="show2"><%= simple_format(@food.food_introduction) %></div>
-          <p class="show1">/ 登録日 /</p>
-          <p class="show2"><%= l @food.created_at, format: :short %></p>
-          <div>
-          <!-- 編集ボタン表示 -->
-            <% if @user == current_user %>
-              <%= link_to "削除",users_food_path(@food), method: :delete, class: "btn btn-danger pull-right", "data-confirm" => "本当に削除しますか？" %>
-              <%=link_to "編集",edit_users_food_path(@food),method: :get, class: "btn btn-success pull-right" %>
-            <% end %>
-          </div><br><br>
-          <div style="text-align: right; border-bottom: solid 1px #ccc; margin-bottom: 2px;" >
-            <%= link_to "食品一覧へ", users_foods_path ,class: 'btn btn-info my-1 mb-5 px-5' %>
-          </div>
-          <!--ここまで -->
-          <% if user_signed_in? %>
-            <!-- いいね表示ここから -->
-            <span class="food_<%= @food.id %>" style="display: block; text-align: left;">
-              <%= render 'food', food: @food %>
-            </span>
-            <!-- ここまで -->
-            <%= @food_comments.count %>件コメント
-            <!-- コメント表記 -->
-            <table id="comments_area" class="table table-hover table-inverse">
-              <%= render partial: 'users/food_comments/index', locals: { food_comments: @food_comments } %>
-            </table>
-            <!-- コメントここまで -->
-            <!-- コメント入力フォーム -->
-            <%= render partial: 'users/food_comments/form', locals: { food_comment: @food_comment, food: @food } %>
-            <!-- ここまで -->
-          <% end %>
-        </div>
+<div class="container">
+  <h2>食品投稿詳細</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <span class="foodpost__image" style="display: block; text-align: center;">
+        <%= attachment_image_tag @food, :food_image, format: 'jpeg' %>
+      </span>
+　　　　 <p class="show1">/ 食品アイデア名 /</p>
+      <p class="show2"><%= @food.food_name %></p>
+      <p class="show1">/ タグ /</p>
+      <p class="show2"><%= @food.tag_list %></p>
+      <p class="show1">/ 投稿者 /</p>
+      <p class="show2"><%= @food.user.name %></p>
+　　　　 <p class="show1">/ アイデア説明 /</p>
+      <div class="show2"><%= simple_format(@food.food_introduction) %></div>
+      <p class="show1">/ 登録日 /</p>
+      <p class="show2"><%= l @food.created_at, format: :short %></p>
+      <div>
+      <!-- 編集ボタン表示 -->
+        <% if @user == current_user %>
+          <%= link_to "削除",users_food_path(@food), method: :delete, class: "btn btn-danger pull-right", "data-confirm" => "本当に削除しますか？" %>
+          <%=link_to "編集",edit_users_food_path(@food),method: :get, class: "btn btn-success pull-right" %>
+        <% end %>
+      </div><br><br>
+      <div style="text-align: right; border-bottom: solid 1px #ccc; margin-bottom: 2px;" >
+        <%= link_to "食品一覧へ", users_foods_path ,class: 'btn btn-info my-1 mb-5 px-5' %>
       </div>
+      <!--ここまで -->
+      <% if user_signed_in? %>
+        <!-- いいね表示ここから -->
+        <span class="food_<%= @food.id %>" style="display: block; text-align: left;">
+          <%= render 'food', food: @food %>
+        </span>
+        <!-- ここまで -->
+        <%= @food_comments.count %>件コメント
+        <!-- コメント表記 -->
+        <table id="comments_area" class="table table-hover table-inverse">
+          <%= render partial: 'users/food_comments/index', locals: { food_comments: @food_comments } %>
+        </table>
+        <!-- コメントここまで -->
+        <!-- コメント入力フォーム -->
+        <%= render partial: 'users/food_comments/form', locals: { food_comment: @food_comment, food: @food } %>
+        <!-- ここまで -->
+      <% end %>
+    </div>
   </div>
+</div>

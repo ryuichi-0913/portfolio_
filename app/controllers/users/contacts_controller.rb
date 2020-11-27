@@ -13,7 +13,7 @@ class Users::ContactsController < ApplicationController
       @users = User.all
       render :new
     end
-    flash[:success] = 'お問い合わせを送信しました。'
+      flash[:success] = 'お問い合わせを送信しました。'
   end
 
   private

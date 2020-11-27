@@ -1,12 +1,12 @@
 <%= form_with(model: [:users, @nonfood_comment], url: users_nonfood_nonfood_comments_path(@nonfood) ) do |f| %>
-      <% if @nonfood_comment.errors.any? %>
-        <h3><%= @nonfood_comment.errors.count %> errors prohibited this nonfood from being saved</h3>
-            <ul>
-              <% @nonfood_comment.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-      <% end %>
-        <%= f.text_area :nonfood_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-        <%= f.submit "送信する",class: 'btn btn-info my-1 mb-5 px-5 pull-right' %>
+  <% if @nonfood_comment.errors.any? %>
+    <h3><%= @nonfood_comment.errors.count %> errors prohibited this nonfood from being saved</h3>
+      <ul>
+        <% @nonfood_comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  <%= f.text_area :nonfood_comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+  <%= f.submit "送信する",class: 'btn btn-info my-1 mb-5 px-5 pull-right' %>
 <% end %>

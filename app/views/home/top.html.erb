@@ -16,80 +16,81 @@
 <!-- サイト概要　-->
   <section class="container">
     <h1 id="thisabout" class="font-weight-bold text-center ">このサイトについて</h1><br>
+    <div class="row">
+      <div class="col-lg-6">
           <div class="row">
-              <div class="col-lg-6">
-                  <div class="row">
-                      <img class="col-sm-6" src="<%= asset_path "chain.png" %>">
-                      <div class="col-sm-6">
-                          <h3>1.あなたと商品開発者・仕入担当をつなぐサイトです。</h3>
-                          <p>商品の開発・仕入れ担当者は日々生活を向上させる商品開発に取り組んでいます。</p>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="row"> <img class="col-sm-6" src="<%= asset_path "hear.jpg" %>">
-                    <div class="col-sm-6">
-                      <h3>2.企業はあなたの声を聞きたがっています。</h3>
-                      <p>みなさんの日常におけるさまざまなシーン・思いを参考にできたら、より具体的な開発を行えます。</p>
-                    </div>
-                </div>
+              <img class="col-sm-6" src="<%= asset_path "chain.png" %>">
+              <div class="col-sm-6">
+                  <h3>1.あなたと商品開発者・仕入担当をつなぐサイトです。</h3>
+                  <p>商品の開発・仕入れ担当者は日々生活を向上させる商品開発に取り組んでいます。</p>
               </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="row"> <img class="col-sm-6" src="<%= asset_path "structure.jpg" %>">
-                <div class="col-sm-6">
-                  <h3>3.みんなの声が形になるかもしれません。</h3>
-                  <p>ふとこんなアイデア思いついた！そのちょっとしたアイデアって、みんなも思ってる生活のお役立ちに貢献できるかも！</p>
-                </div>
-              </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row"> <img class="col-sm-6" src="<%= asset_path "hear.jpg" %>">
+            <div class="col-sm-6">
+              <h3>2.企業はあなたの声を聞きたがっています。</h3>
+              <p>みなさんの日常におけるさまざまなシーン・思いを参考にできたら、より具体的な開発を行えます。</p>
             </div>
-            <div class="col-lg-6">
-              <div class="row"> <img class="col-sm-6" src="<%= asset_path "simple.jpg" %>">
-                <div class="col-sm-6">
-                  <h3>4.シンプルなサイト構成です。</h3>
-                  <p>投稿した声を担当者や周りの人達が日々キャッチ、登録して発信して交流するシンプルなサイトです。</p>
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="row"> <img class="col-sm-6" src="<%= asset_path "structure.jpg" %>">
+          <div class="col-sm-6">
+            <h3>3.みんなの声が形になるかもしれません。</h3>
+            <p>ふとこんなアイデア思いついた！そのちょっとしたアイデアって、みんなも思ってる生活のお役立ちに貢献できるかも！</p>
           </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row"> <img class="col-sm-6" src="<%= asset_path "simple.jpg" %>">
+          <div class="col-sm-6">
+            <h3>4.シンプルなサイト構成です。</h3>
+            <p>投稿した声を担当者や周りの人達が日々キャッチ、登録して発信して交流するシンプルなサイトです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <!-- サイト使い方 -->
     <hr>
-    <section class="container">
-        <h1 class="font-weight-bold text-center ">このサイトの使い方</h1><br>
-        <div class="row">
-            <div class="col-lg-7 text-center ">
-                <h2 class="font-weight-bold">1.さっそく登録してみよう!!</h2>
-                <p class="lead" style="line-height: 2.0;">本サイトは会員登録をしない場合は閲覧のみが可能です。<br>自ら情報を発信したり他の人とやり取りするなど、<br>機能を全て使う場合は会員登録をお願いします。</p>
-            </div>
-            <div class="col-lg-5"> <img class="img-responsive center-block" src="<%= asset_path "sign_up.jpg" %>"></div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-7 text-center ">
-                <h2 class="font-weight-bold">2.投稿してみよう!!</h2>
-                <p class="lead" style="line-height: 2.0;">会員登録後はマイページから食品のアイデア・雑貨品の<br>アイデアに分かれて新規投稿を行いましょう。<br>ふと思いついたアイデアも外歓迎です！！<br>また他の人の投稿にいいねやコメントを残して、<br>他の人とのつながりでより思いのこもったアイデアに。</p>
-            </div>
-            <div class="col-lg-5 order-md-1"> <img class="img-responsive center-block" src="<%= asset_path "posts.jpg" %>"> </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-7 text-center ">
-                <h2 class="font-weight-bold">3.投稿を見よう!!</h2>
-                <p class="lead" style="line-height: 2.0;">みんなの日常での色んな声（アイデア）が載っています。<br>参考にすることで日々の生活がより豊かになるかもしれません。<br>コメント機能を使って意見を出し合えば、より深いアイデアになるかもしれません。<br>
-            </div>
-            <div class="col-lg-5"> <img class="img-responsive center-block" src="<%= asset_path "look.jpg" %>"> </div>
-        </div><br>
-        <p style="border-bottom: 1px solid white;"></p>
-        <div class="row">
-            <div class="col-lg-7 text-center ">
-                <h2 class="font-weight-bold">このサイトはポートフォリオサイトです</h2>
-                <p class="lead" style="line-height: 2.0;">
-                  テスト動作確認可能です。<br>
-                  <%= link_to '管理者側', new_admin_session_path %>ログインアドレス"a@a"パスワード"aaaaaa"<br>
-                  <%= link_to '顧客側', new_user_session_path %>ログインアドレス"b@b"パスワード"bbbbbb"<br>
-            </div>
-        </div>
-    </section>
+  <section class="container">
+    <h1 class="font-weight-bold text-center ">このサイトの使い方</h1><br>
+    <div class="row">
+      <div class="col-lg-7 text-center ">
+          <h2 class="font-weight-bold">1.さっそく登録してみよう!!</h2>
+          <p class="lead" style="line-height: 2.0;">本サイトは会員登録をしない場合は閲覧のみが可能です。<br>自ら情報を発信したり他の人とやり取りするなど、<br>機能を全て使う場合は会員登録をお願いします。</p>
+      </div>
+      <div class="col-lg-5"> <img class="img-responsive center-block" src="<%= asset_path "sign_up.jpg" %>"></div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-7 text-center ">
+          <h2 class="font-weight-bold">2.投稿してみよう!!</h2>
+          <p class="lead" style="line-height: 2.0;">会員登録後はマイページから食品のアイデア・雑貨品の<br>アイデアに分かれて新規投稿を行いましょう。<br>ふと思いついたアイデアも外歓迎です！！<br>また他の人の投稿にいいねやコメントを残して、<br>他の人とのつながりでより思いのこもったアイデアに。</p>
+      </div>
+      <div class="col-lg-5 order-md-1"> <img class="img-responsive center-block" src="<%= asset_path "posts.jpg" %>">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-7 text-center ">
+          <h2 class="font-weight-bold">3.投稿を見よう!!</h2>
+          <p class="lead" style="line-height: 2.0;">みんなの日常での色んな声（アイデア）が載っています。<br>参考にすることで日々の生活がより豊かになるかもしれません。<br>コメント機能を使って意見を出し合えば、より深いアイデアになるかもしれません。<br>
+      </div>
+      <div class="col-lg-5"> <img class="img-responsive center-block" src="<%= asset_path "look.jpg" %>"> </div>
+    </div><br>
+    <p style="border-bottom: 1px solid white;"></p>
+    <div class="row">
+      <div class="col-lg-7 text-center ">
+          <h2 class="font-weight-bold">このサイトはポートフォリオサイトです</h2>
+          <p class="lead" style="line-height: 2.0;">
+            テスト動作確認可能です。<br>
+            <%= link_to '管理者側', new_admin_session_path %>ログインアドレス"a@a"パスワード"aaaaaa"<br>
+            <%= link_to '顧客側', new_user_session_path %>ログインアドレス"b@b"パスワード"bbbbbb"<br>
+      </div>
+    </div>
+  </section>
 </body>

@@ -55,6 +55,10 @@ class Users::FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:food_image, :food_name, :food_introduction, :tag_list)
+    params.require(:food).permit(
+      :food_image,
+      :food_name,
+      :food_introduction,
+      :tag_list)
   end
 end
