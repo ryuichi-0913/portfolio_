@@ -1,5 +1,6 @@
 class ContactMailer < ApplicationMailer
   default from: 'from@example.com'
+
   # メソッドに対して引数を設定
   def send_when_admin_reply(user, contact)
     @user = user # ユーザー情報
