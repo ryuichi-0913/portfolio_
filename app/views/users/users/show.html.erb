@@ -2,7 +2,7 @@
   <div class="row">
 	<h2><b><%= @user.name %></b> さんのページ</h2>
 	<div class="col-md-3">
-      <span><%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "height: 200px; width:200px; border-radius:50%;" %>
+      <span class="user__picture"><%= attachment_image_tag @user, :user_image, format: "jpeg", id: "img_prev", fallback: "no_image.jpg", style: "border-radius:50%;" %>
       </span>
 	    <div>
     	  <% if @user == current_user %>
