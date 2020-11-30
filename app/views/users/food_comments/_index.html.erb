@@ -6,8 +6,8 @@
 <% @food.food_comments.each do |food_comment| %>
   <tbody>
       <tr>
-        <td><%= link_to users_user_path(food_comment.user), class: 'hoge' do %>
-              <%= attachment_image_tag food_comment.user, :user_image, size: '50x50',　format: 'jpeg', fallback: "no_image.jpg", style: "border-radius:50%;" %><br>
+        <td class="user_comment_image"><%= link_to users_user_path(food_comment.user), class: 'hoge' do %>
+              <%= attachment_image_tag food_comment.user, :user_image,　format: 'jpeg', fallback: "no_image.jpg", style: "border-radius:50%;" %><br>
               <%= food_comment.user.name %>
             <% end %></td>
         <td><%= l food_comment.created_at, format: :short %><br>

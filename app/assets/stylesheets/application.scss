@@ -278,5 +278,13 @@ h2 {
   }
 }
 
+/*コメント非同期のrefileに適応*/
+.user_comment_image {
+  .user_image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+}
 
 
