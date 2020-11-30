@@ -20,5 +20,9 @@ module Portfolio
     # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
 
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
   end
 end
